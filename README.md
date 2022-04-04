@@ -27,5 +27,3 @@ Habría un menú  general con las opciones de Home, Pokémons, Movimientos y Obj
 
 ## Menú usuario
 Además de lo mencionado anteriormente, un sistema de ranking e historial, también habría una opción crear una tarjeta de entrenador y donde podrías cambiar de avatar. 
-
-
