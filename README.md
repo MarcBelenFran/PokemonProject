@@ -1,5 +1,6 @@
 # Pokedex FBM
-## Large Proyecto Fin de Curso
+
+### Proyecto Fin de Curso
        
 # Autores:
 Francisco José Almansa Martínez
