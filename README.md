@@ -3,14 +3,8 @@
 ### Proyecto Fin de Curso
        
 # Autores:
-Francisco José Almansa Martínez
-
-Belén Gamero García
-
-Marc Sancho Santandreu
-
+Francisco José Almansa Martínez, Belén Gamero García, Marc Sancho Santandreu
 2022
-
 
 ## Introducción
 Para el proyecto de final de curso buscamos algún tema que nos resultase interesante a los tres y surgió el tema de Pokémon, a partir de esta idea desarrollamos lo siguiente.
@@ -27,7 +21,6 @@ Habría un menú  general con las opciones de Home, Pokémons, Movimientos y Obj
 - El apartado de Movimientos y Objetos, se mostraria el equipo que has escogido, y podrias elegir entre los diferentes pokemons a los cuales quieras para quitar o añadir los diferentes movimientos u objetos.
     
 - El apartado de Combate, ya con tu equipo escogido, podrias elegir entre pelear contra un bot, con diferente dificultad, o contra otra persona, donde  se crearia un link temporal que tendrías que compartir con un amigo.
-
 
 ## Menú usuario
 Además de lo mencionado anteriormente, un sistema de ranking e historial, también habría una opción crear una tarjeta de entrenador y donde podrías cambiar de avatar. 
