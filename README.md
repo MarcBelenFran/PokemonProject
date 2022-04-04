@@ -2,12 +2,12 @@
 
 ### Proyecto Fin de Curso
        
-# Autores:
+## Autores:
 Francisco José Almansa Martínez, Belén Gamero García, Marc Sancho Santandreu
 
 2022
 
-## Introducción
+###  Introducción
 Para el proyecto de final de curso buscamos algún tema que nos resultase interesante a los tres y surgió el tema de Pokémon, a partir de esta idea desarrollamos lo siguiente.
 
 Una aplicación de Pokémon, formado por un login sencillo con usuario y contraseña, que se dividiría en dos tipos de usuarios, los usuarios comunes y los Premium.  
