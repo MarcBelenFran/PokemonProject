@@ -36,7 +36,7 @@ Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Obj
 
 ## Diagrama inicial del proyecto
 
-insertar imagen!!!
+![Diseño Inicial](https://user-images.githubusercontent.com/91567318/162044771-2d7b2de6-05d0-471d-93f9-7cd32ccdf8bd.png)
 
 ## Metodología
 
