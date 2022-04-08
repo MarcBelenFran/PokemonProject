@@ -16,7 +16,7 @@ Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Obj
 
 ## Menú general
 
-- En el apartado de Home habría una pequeña descripción de la página con las diferentes funcionalidades para los prémium y la posibilidad de adquirir estas ventajas. Esta interfaz será la unica a la se podrá acceder si no estas logueado.
+- En el apartado de Home habría una pequeña descripción de la página con las diferentes funcionalidades para los prémium y la posibilidad de adquirir estas ventajas. Esta interfaz será la unica a la que se podrá acceder sin estar logueado.
     
 - En el apartado de Pokémon, estarán todos los Pokémon que podrías elegir para añadir a uno de los 3 equipos que estarán de forma predeterminada. Se podrá añadir hasta un máximo de 6 por equipo.
     
