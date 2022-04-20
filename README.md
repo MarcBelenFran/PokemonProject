@@ -35,11 +35,12 @@ Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Obj
 - En el Ranking se podrán ver los usuarios con más victorias en combates, el top 1 se mostrará, además de su nombre y numero de victorias, con su avatar y equipo, del top 2 al 5 se mostrarán igual que el top 1 pero sin su equipo, y el resto de jugadores con su nombre y numero de victorias.
 
 ## Diagrama inicial del proyecto
-
-![Diseño Inicial](https://user-images.githubusercontent.com/91567318/162044771-2d7b2de6-05d0-471d-93f9-7cd32ccdf8bd.png)
+![image](https://user-images.githubusercontent.com/91600940/164216130-1eb48713-6428-4b94-982a-6c12532ea555.png)
 
 ## Metodología
 
 ### Scrum
 
 - La metodología escogida para este proyecto ha sido la metodología de Scrum, se ha visto la más oportuna para en este caso, ya que una vez finalizada la fase de Análisis y diseño el equipo va a estar constantemente trabajando, y en esta metodología hay buena comunicación a la hora de trabajar, ya que diariamente se harán reuniones para poner en común los avances, dificultades, ideas, etc.
+
+
