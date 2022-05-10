@@ -34,8 +34,6 @@ Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Obj
    
 - En el Ranking se podrán ver los usuarios con más victorias en combates, el top 1 se mostrará, además de su nombre y numero de victorias, con su avatar y equipo, del top 2 al 5 se mostrarán igual que el top 1 pero sin su equipo, y el resto de jugadores con su nombre y numero de victorias.
 
-## Diagrama inicial del proyecto
-![image](https://user-images.githubusercontent.com/91600940/164216130-1eb48713-6428-4b94-982a-6c12532ea555.png)
 
 ## Metodología
 
