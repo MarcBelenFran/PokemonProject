@@ -1,0 +1,99 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#introduccion{
+    width: 75%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 3px solid black;
+    padding: 1%;
+}
+
+#introduccion > p{
+    text-align: justify;
+}
+
+
+#informacion{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 3%;
+    justify-content: center;
+    width: 75%;
+    gap: 10%;
+    flex-wrap: wrap;
+}
+
+#tituloH2{
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+.infoCartas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 350px;
+    border-radius: 5px;
+    min-height: 150px;
+    margin-bottom: 5%;
+}
+
+.infoCartas > img {
+    width:100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.infoCartas:hover{
+    box-shadow: 0 10px 24px 0 rgba(0,0,0,0.5);
+}
+
+.textoCartas{
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+}
+
+.textoCartas > p{
+    width: 85%;
+    min-height: 100px;
+}
+
+.textoCartas > h3{
+    font-size: 1em;
+}
+
+
+#botonesVisitante{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+#botonesVisitante > button{
+    font-size: 1.5rem;
+    padding: 2%;
+    width: 100%;
+}
+
+@media screen and (max-width: 1.280px){
+
+}  
+@media only screen and (max-width: 768px)  {
+    #introduccion{
+        margin-top: 7%;
+    }
+    
+}
