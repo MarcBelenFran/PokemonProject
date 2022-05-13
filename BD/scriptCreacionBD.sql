@@ -3,31 +3,31 @@ CREATE DATABASE PokedexDB;
 USE PokedexDB;
 
 CREATE TABLE pasiva(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     PRIMARY KEY (ID)
 );
 
 CREATE TABLE tipo(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     PRIMARY KEY (ID)
 );
 CREATE TABLE objeto(
-	id INTEGER,
+	id INTEGER auto_increment,
     rutaImagen VARCHAR(150),
     nombre VARCHAR(100),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE privilegio(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE categoria(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     PRIMARY KEY (id)
 );
@@ -37,7 +37,7 @@ CREATE TABLE categoria(
 
 
 CREATE TABLE efecto(
-	id INTEGER,
+	id INTEGER auto_increment,
     valor INTEGER,
     estadistica VARCHAR(50),
     descripcion VARCHAR(300),
@@ -49,7 +49,7 @@ CREATE TABLE efecto(
 );
 
 CREATE TABLE pokemon(
-	id INTEGER,
+	id INTEGER auto_increment,
     vida INTEGER,
     nombre VARCHAR(100),
 	rutaImagen VARCHAR(150),
@@ -68,7 +68,7 @@ CREATE TABLE pokemon(
 );
 
 CREATE TABLE avatarUsuario(
-	id INTEGER,
+	id INTEGER auto_increment,
     rutaImagen VARCHAR(150),
     privilegio_ID INTEGER,
     PRIMARY KEY (id),
@@ -77,10 +77,11 @@ CREATE TABLE avatarUsuario(
 
 
 CREATE TABLE usuario(
-	id INTEGER,
+	id INTEGER auto_increment,
     fechaCreacion DATE,
     numVictorias INTEGER,
     nombreUsuario VARCHAR(100),
+    correo VARCHAR(200),
     contraseña VARCHAR(20),
     avatar_ID INTEGER,
     privilegio_ID INTEGER,
@@ -90,7 +91,7 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE equipo(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     usuario_ID INTEGER,
     PRIMARY KEY (id),
@@ -106,7 +107,7 @@ CREATE TABLE equipoPokemon(
 );
 
 CREATE TABLE movimiento(
-	id INTEGER,
+	id INTEGER auto_increment,
     nombre VARCHAR(100),
     potencia INTEGER,
     probCritico INTEGER,
@@ -119,7 +120,7 @@ CREATE TABLE movimiento(
 );
 
 CREATE TABLE movimientoPokemon(
-	movimiento_ID INTEGER,
+	movimiento_ID INTEGER auto_increment,
     pokemon_ID INTEGER,
     PRIMARY KEY (movimiento_ID, pokemon_ID),
     FOREIGN KEY (movimiento_ID) REFERENCES movimiento(id),
@@ -127,14 +128,14 @@ CREATE TABLE movimientoPokemon(
 );
 
 CREATE TABLE eficaz(
-	id INTEGER,
+	id INTEGER auto_increment,
     tipo_ID INTEGER,
     PRIMARY KEY (id),
     FOREIGN KEY (tipo_ID) REFERENCES tipo(id)
 );
 
 CREATE TABLE combate(
-	id INTEGER,
+	id INTEGER auto_increment,
     ganador INTEGER,
     fechaHora DATETIME,
     equipo1_ID INTEGER,
@@ -144,9 +145,3 @@ CREATE TABLE combate(
     FOREIGN KEY (equipo1_ID) REFERENCES equipo(id),
     FOREIGN KEY (equipo2_ID) REFERENCES equipo(id)
 );
-
-
-
-
-
-

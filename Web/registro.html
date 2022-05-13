@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet"  href="css/header.css"></link>
+    <link rel="stylesheet"  href="css/general.css"></link>
+    <link rel="stylesheet"  href="css/registro.css"></link>
+    <title>Home</title>
+</head>
+
+
+<body> 
+    <header id="head-menu"> 
+        <div id="logoHeader">
+            <img src="../Imagenes/pokeboll.png" class="logoPokeball" alt="Logo de una pokeball"></img>
+            <h1 id="headerText">Pokédex FBM</h1>
+        </div>
+        <div id="logoEntrenador">
+            <div id="bordeEntrenador"><img src="../Imagenes/EntrenadorIncognito.png" id="avatarEntrenador"></div>
+        </div>
+    </header>
+    <nav id="menu">
+        <div id="botonNav">
+            <div id="centroBoton">
+
+            </div>
+        </div>
+        <ul>
+            <li><a href="home.html" class="linkNav">Home</a></li>
+            <li><a href="Pokemons.html" class="linkNav">Pokémon</a></li>
+            <li><a href="MyO.html" class="linkNav">Movimientos y Objetos</a></li>
+            <li><a href="Combate.html" class="linkNav">Combates</a></li>             
+        </ul>
+    </nav>
+    <main>
+        <h2>Registro</h2>
+        <form>
+            <div>
+            <label for="nombre">Nombre: </label> <br>
+            <input type="text" id="nombre" autocomplete="off">
+            </div>
+
+            <div>
+            <label for="correo">Correo: </label> <br>
+            <input type="text" id="correo" autocomplete="off">
+            </div>
+
+            <div>
+            <label for="contraseña">Contraseña: </label> <br>
+            <input type="password" id="contraseña">
+            </div>
+            
+            <button type="button" onclick="registrar()">Registrar </button>
+
+            <a href="login.html">¿Ya tienes cuenta?</a>
+
+            <div id="resultado"></div>
+            <script src="js/registro.js"></script>
+        </form>
+    </main>
+</div>
+</body>
+</html>
