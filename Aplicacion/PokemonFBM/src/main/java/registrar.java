@@ -28,7 +28,7 @@ public class registrar extends HttpServlet {
 		Usuario u = new Usuario(request.getParameter("nombre"),request.getParameter("correo"),request.getParameter("contraseña"));
 		System.out.println(u);
 		if(u.registrarUsuario()) {
-			response.getWriter().append("Usuario Registrado corrctamente");
+			response.getWriter().append("Usuario Registrado correctamente");
 		}else {
 			response.getWriter().append("Error: Usuario no registrado");
 		}

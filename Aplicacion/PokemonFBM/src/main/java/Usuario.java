@@ -36,6 +36,7 @@ public class Usuario {
 		
 		return resultado;
 	}
+	
 
 	@Override
 	public String toString() {

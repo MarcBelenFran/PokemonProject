@@ -33,9 +33,6 @@ CREATE TABLE categoria(
 );
 
 
-----------
-
-
 CREATE TABLE efecto(
 	id INTEGER auto_increment,
     valor INTEGER,
@@ -78,13 +75,13 @@ CREATE TABLE avatarUsuario(
 
 CREATE TABLE usuario(
 	id INTEGER auto_increment,
-    fechaCreacion DATE,
-    numVictorias INTEGER,
+    fechaCreacion DATETIME default current_timestamp,
+    numVictorias INTEGER default 0,
     nombreUsuario VARCHAR(100),
     correo VARCHAR(200),
     contraseña VARCHAR(20),
-    avatar_ID INTEGER,
-    privilegio_ID INTEGER,
+    avatar_ID INTEGER default 1,
+    privilegio_ID INTEGER default 1,
     PRIMARY KEY (id),
     FOREIGN KEY (avatar_ID) REFERENCES avatarUsuario(id),
     FOREIGN KEY (privilegio_ID) REFERENCES privilegio(id)
@@ -145,3 +142,8 @@ CREATE TABLE combate(
     FOREIGN KEY (equipo1_ID) REFERENCES equipo(id),
     FOREIGN KEY (equipo2_ID) REFERENCES equipo(id)
 );
+
+
+INSERT INTO privilegio (nombre) VALUES ("básico");
+INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBasicoChico", 1);
+INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBasicoChica", 1);
