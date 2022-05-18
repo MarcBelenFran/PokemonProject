@@ -11,8 +11,7 @@ botonNav.addEventListener('click', () => {
 
 
 document.addEventListener('click', (e) => {
-    console.log(e.target.id);
-    if (e.target.id != 'centroBoton' && e.target.id != 'ulNav') {
+    if (e.target.id != 'centroBoton' && e.target.id != 'ulNav' && window.innerWidth <= 768) {
         listaMenu.style.display = 'none';
         nav.style.height = '50px';
         nav.style.flexDirection = 'row'

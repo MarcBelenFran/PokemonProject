@@ -2,6 +2,12 @@
     --color-rojo: rgba(248,49,56,255);
 }
 
+#botonSesion{
+    display: none;
+    font-size: 1.5em;
+    width: 30%;
+}
+
 .logoPokeball{
     min-width: 70px;
     width: 10%;
