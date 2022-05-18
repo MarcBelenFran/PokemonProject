@@ -1,5 +1,14 @@
+window.onload = function(){
+    if(sessionStorage.getItem("usuario") != null){
+        actualizarDatos();
+        
+    }
+}
+
+    
+
 function registrar(){
-    var http = new XMLHttpRequest();
+    let http = new XMLHttpRequest();
  
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
@@ -14,12 +23,14 @@ function registrar(){
 }
 
 function login(){
-    var http = new XMLHttpRequest();
+    let http = new XMLHttpRequest();
  
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
             if(http.responseText == "true"){
                 window.location.href = "home.html";
+                sessionStorage.setItem("usuario", document.getElementById("nombre").value);
+                sessionStorage.setItem("contraseña", document.getElementById("contraseña").value);
             }else{
                 document.getElementById("resultado").innerHTML = "ERROR: Fallo en el nombre de usuario o contraseña"; 
             }
@@ -30,4 +41,19 @@ function login(){
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("nombre="+document.getElementById("nombre").value+"&&contraseña="+document.getElementById("contraseña").value);
 
+}
+
+function actualizarDatos(){
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            document.getElementById("avatarEntrenador").src = http.responseText;
+            document.getElementById("botonesVisitante").style.display = 'none';
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarDatos", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("nombre="+sessionStorage.getItem("usuario")+"&&contraseña="+sessionStorage.getItem("contraseña"));
 }

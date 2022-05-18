@@ -145,5 +145,5 @@ CREATE TABLE combate(
 
 
 INSERT INTO privilegio (nombre) VALUES ("básico");
-INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBasicoChico", 1);
-INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBasicoChica", 1);
+INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
+INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
