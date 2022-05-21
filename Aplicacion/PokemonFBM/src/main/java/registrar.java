@@ -25,12 +25,12 @@ public class registrar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = new Usuario(request.getParameter("nombre"),request.getParameter("correo"),request.getParameter("contraseña"));
+		Usuario u = new Usuario(request.getParameter("nombre"),request.getParameter("correo"),request.getParameter("contrasena"));
 		System.out.println(u);
 		if(u.registrarUsuario()) {
 			response.getWriter().append("Usuario Registrado correctamente");
 		}else {
-			response.getWriter().append("Error: Usuario no registrado");
+			response.getWriter().append("Error: Nombre de usuario ya registrado");
 		}
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");

@@ -1,12 +1,21 @@
 const botonNav = document.getElementById('botonNav');
 const listaMenu = document.getElementById('ulNav');
 const nav = document.getElementById('menu');
+let abierto = false;
 
 botonNav.addEventListener('click', () => {
+    if(!abierto){
     listaMenu.style.display='flex';
     nav.style.flexDirection = 'column'
     listaMenu.className = 'desplegable';
     nav.style.height = '100%';
+    abierto = true;
+    }else{
+        listaMenu.style.display = 'none';
+        nav.style.height = '50px';
+        nav.style.flexDirection = 'row';
+        abierto = false;
+    }
 })
 
 

@@ -37,18 +37,18 @@
     </nav>
     <main>
         <h2>Login</h2>
-        <form>
+        <form onsubmit="login();return false">
             <div>
             <label for="nombre">Nombre: </label> <br>
-            <input type="text" id="nombre" autocomplete="off">
+            <input type="text" id="nombre" autocomplete="off" required>
             </div>
 
             <div>
-            <label for="contraseña">Contraseña: </label> <br>
-            <input type="password" id="contraseña">
+            <label for="contrasena">Contraseña: </label> <br>
+            <input type="password" id="contrasena" required>
             </div>
             
-            <button type="button" onclick="login()">Loguear </button>
+            <button type="submit">Loguear </button>
 
             <a href="registro.html">¿No tienes cuenta?</a>
 

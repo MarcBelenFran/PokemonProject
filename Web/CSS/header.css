@@ -8,6 +8,13 @@
     width: 30%;
 }
 
+#nombreUsuario{
+    margin-right: 10px;
+    font-size: 2em;
+    font-weight: bolder;
+    color: black;
+}
+
 .logoPokeball{
     min-width: 70px;
     width: 10%;
@@ -150,6 +157,4 @@
         border: 3px solid black;
         box-shadow: 2px grey;
     }
-
-
 }

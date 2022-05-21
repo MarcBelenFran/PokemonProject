@@ -5,13 +5,13 @@ import java.sql.Statement;
 public class Usuario {
 	private String nombre;
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	
 	// Constructor
-	public Usuario(String nombre, String correo, String contraseña) {
+	public Usuario(String nombre, String correo, String contrasena) {
 		this.setNombre(nombre);
 		this.setCorreo(correo);
-		this.setContraseña(contraseña);
+		this.setContrasena(contrasena);
 	}
 
 	public boolean registrarUsuario() {
@@ -26,7 +26,7 @@ public class Usuario {
 			System.out.println("3");
 			Statement st = con.createStatement();
 			System.out.println("4");
-			String query = "INSERT INTO usuario (nombreUsuario,correo,contraseña) VALUES('"+this.getNombre()+"','"+this.getCorreo()+"','"+this.getContraseña()+"')";
+			String query = "INSERT INTO usuario (nombreUsuario,correo,contrasena) VALUES('"+this.getNombre()+"','"+this.getCorreo()+"','"+this.getContrasena()+"')";
 			System.out.println("5");
 			st.executeUpdate(query);
 			System.out.println("6");
@@ -42,7 +42,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", correo=" + correo + ", contraseña=" + contraseña + "]";
+		return "Usuario [nombre=" + nombre + ", correo=" + correo + ", contrasena=" + contrasena + "]";
 	}
 
 	
@@ -63,12 +63,12 @@ public class Usuario {
 		this.correo = correo;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 	

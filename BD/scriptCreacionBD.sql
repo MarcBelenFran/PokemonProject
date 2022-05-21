@@ -77,9 +77,9 @@ CREATE TABLE usuario(
 	id INTEGER auto_increment,
     fechaCreacion DATETIME default current_timestamp,
     numVictorias INTEGER default 0,
-    nombreUsuario VARCHAR(100),
+    nombreUsuario VARCHAR(10),
     correo VARCHAR(200),
-    contraseña VARCHAR(20),
+    contrasena VARCHAR(20),
     avatar_ID INTEGER default 1,
     privilegio_ID INTEGER default 1,
     PRIMARY KEY (id),
@@ -147,3 +147,17 @@ CREATE TABLE combate(
 INSERT INTO privilegio (nombre) VALUES ("básico");
 INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
 INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
+
+delimiter $$
+DROP TRIGGER IF EXISTS revisarUsuarios $$
+CREATE TRIGGER revisarUsuarios before insert on usuario
+FOR EACH ROW
+BEGIN
+	DECLARE contador int;
+    set contador = (select COUNT(nombreUsuario) from usuario where nombreUsuario=new.nombreUsuario);
+	IF(contador > 0) then
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nombre de usuario repetido';
+	END IF;
+END; $$
+
+delimiter ;

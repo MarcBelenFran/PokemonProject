@@ -37,23 +37,23 @@
     </nav>
     <main>
         <h2>Registro</h2>
-        <form>
+        <form onsubmit="registrar();return false">
             <div>
             <label for="nombre">Nombre: </label> <br>
-            <input type="text" id="nombre" autocomplete="off">
+            <input type="text" id="nombre" autocomplete="off" required>
             </div>
 
             <div>
             <label for="correo">Correo: </label> <br>
-            <input type="text" id="correo" autocomplete="off">
+            <input type="text" id="correo" autocomplete="off" required>
             </div>
 
             <div>
-            <label for="contraseña">Contraseña: </label> <br>
-            <input type="password" id="contraseña">
+            <label for="contrasena">Contraseña: </label> <br>
+            <input type="password" id="contrasena" required>
             </div>
             
-            <button type="button" onclick="registrar()">Registrar </button>
+            <button type="submit">Registrar </button>
 
             <a href="login.html">¿Ya tienes cuenta?</a>
 

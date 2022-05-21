@@ -30,7 +30,7 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usuario = request.getParameter("nombre");
-		String contraseña = request.getParameter("contraseña");
+		String contrasena = request.getParameter("contrasena");
 		boolean resultado = false;
 		
 		try {
@@ -38,7 +38,7 @@ public class login extends HttpServlet {
 			String url = "jdbc:mysql://localhost:3306/pokedexdb";
 			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
 			Statement st = con.createStatement();
-			String query = ("select * from usuario where nombreUsuario ='"+usuario+"' and contraseña='"+contraseña+"'");
+			String query = ("select * from usuario where nombreUsuario ='"+usuario+"' and contrasena='"+contrasena+"'");
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
 				resultado = true;
