@@ -1,8 +1,4 @@
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,24 +25,13 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String usuario = request.getParameter("nombre");
-		String contrasena = request.getParameter("contrasena");
-		boolean resultado = false;
+		Usuario u = new Usuario(request.getParameter("nombre"), request.getParameter("contrasena"));
 		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
-			Statement st = con.createStatement();
-			String query = ("select * from usuario where nombreUsuario ='"+usuario+"' and contrasena='"+contrasena+"'");
-			ResultSet rs = st.executeQuery(query);
-			if(rs.next()) {
-				resultado = true;
-			}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
+		if(!u.validarDatosLogin()) {
+			response.getWriter().append("validacion");
+		}else {
+			response.getWriter().append(String.valueOf(u.logearUsuario()));
 		}
-		response.getWriter().append(String.valueOf(resultado));
 		response.addHeader("Access-Control-Allow-Origin", "*");
 	}
 

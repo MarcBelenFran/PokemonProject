@@ -89,7 +89,7 @@ main{
 }
 
 #botonSesion{
-    background-color: red;
+    background-color: rgba(248,49,56,255); 
     color: white;
     border-radius: 5%;
 }

@@ -40,17 +40,17 @@
         <form onsubmit="registrar();return false">
             <div>
             <label for="nombre">Nombre: </label> <br>
-            <input type="text" id="nombre" autocomplete="off" required>
+            <input type="text" id="nombre" autocomplete="off"  onchange="this.setCustomValidity('')" required>
             </div>
 
             <div>
             <label for="correo">Correo: </label> <br>
-            <input type="text" id="correo" autocomplete="off" required>
+            <input type="text" id="correo" autocomplete="off" onchange="this.setCustomValidity('')" required>
             </div>
 
             <div>
             <label for="contrasena">Contraseña: </label> <br>
-            <input type="password" id="contrasena" required>
+            <input type="password" id="contrasena" onchange="this.setCustomValidity('')" required>
             </div>
             
             <button type="submit">Registrar </button>

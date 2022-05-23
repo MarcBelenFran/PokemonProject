@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.*;
 
 public class Usuario {
 	private String nombre;
@@ -8,12 +10,17 @@ public class Usuario {
 	private String contrasena;
 	
 	// Constructor
+	public Usuario(String nombre, String contrasena) {
+		this(nombre, null, contrasena);
+	}
+
 	public Usuario(String nombre, String correo, String contrasena) {
 		this.setNombre(nombre);
 		this.setCorreo(correo);
 		this.setContrasena(contrasena);
 	}
-
+	
+	
 	public boolean registrarUsuario() {
 		boolean resultado = true; 
 		try {
@@ -35,6 +42,67 @@ public class Usuario {
 		}
 		
 		return resultado;
+	}
+	
+	public boolean logearUsuario() {
+		boolean resultado = false;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Statement st = con.createStatement();
+			String query = ("select * from usuario where nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				resultado = true;
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultado;
+	}
+	
+	public boolean validarDatosRegistro(){
+		boolean validacion = false; 
+		String patternNombre = "^[0-9a-zA-Z]{1,10}$";
+		String patternCorreo = "^\\w{1,70}\\@[a-zA-Z0-9]{2,64}\\.[a-zA-Z]{2,64}$";
+		String patternContrasena = "^[0-9a-zA-Z]{6,20}$";
+			
+
+		
+		if(!Pattern.matches(patternNombre, this.getNombre())) {
+			System.out.println("nombre");
+			
+		}else if(!Pattern.matches(patternCorreo, this.getCorreo())){
+			System.out.println("correo");
+			
+		}else if(!Pattern.matches(patternContrasena, this.getContrasena())){
+			System.out.println("contraseña");
+		}else {
+			validacion = true;
+		}
+		
+		return validacion;
+	}
+	
+	public boolean validarDatosLogin(){
+		boolean validacion = false; 
+		String patternNombre = "^[0-9a-zA-Z]{1,10}$";
+		String patternContrasena = "^[0-9a-zA-Z]{6,20}$";
+			
+
+		
+		if(!Pattern.matches(patternNombre, this.getNombre())) {
+			System.out.println("nombre");	
+		}else if(!Pattern.matches(patternContrasena, this.getContrasena())){
+			System.out.println("contraseña");
+		}else {
+			validacion = true;
+		}
+		
+		return validacion;
 	}
 	
 	
