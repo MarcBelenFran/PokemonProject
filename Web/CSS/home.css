@@ -88,11 +88,7 @@ main{
     width: 100%;
 }
 
-#botonSesion{
-    background-color: rgba(248,49,56,255); 
-    color: white;
-    border-radius: 5%;
-}
+
 
 @media screen and (max-width: 1.280px){
 

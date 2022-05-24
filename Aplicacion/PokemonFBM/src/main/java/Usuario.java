@@ -87,6 +87,27 @@ public class Usuario {
 		return validacion;
 	}
 	
+	public String  actualizarDatos() {
+		String rutaImagen = "../Imagenes/EntrenadorIncognito.png";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Statement st = con.createStatement();
+			String query = ("select rutaImagen from usuario, avatarUsuario where usuario.avatar_ID = avatarUsuario.id and nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				rutaImagen = rs.getString("rutaImagen");
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return rutaImagen;
+	}
+	
 	public boolean validarDatosLogin(){
 		boolean validacion = false; 
 		String patternNombre = "^[0-9a-zA-Z]{1,10}$";

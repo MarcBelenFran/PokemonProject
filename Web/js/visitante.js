@@ -11,6 +11,12 @@ function registrar() {
         http.onreadystatechange = function () {
             if (http.readyState == 4 && http.status == 200) {
                 document.getElementById("resultado").innerHTML = http.responseText;
+
+                if(document.getElementById("resultado").innerHTML == "Usuario Registrado correctamente"){
+                    setTimeout(function(){      
+                        window.location.href = "login.html";
+                    }, 2000);
+                }
             }
         }
 

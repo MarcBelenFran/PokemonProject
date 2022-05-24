@@ -3,6 +3,8 @@ window.onload = function(){
         actualizarDatos();
         document.getElementById("botonSesion").style.display = 'block';
         document.getElementById("nombreUsuario").innerHTML = sessionStorage.getItem("usuario");
+    }else{
+        window.location.href = "home.html";
     }
 }
 

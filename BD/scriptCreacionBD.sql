@@ -154,7 +154,7 @@ CREATE TRIGGER revisarUsuarios before insert on usuario
 FOR EACH ROW
 BEGIN
 	DECLARE contador int;
-    set contador = (select COUNT(nombreUsuario) from usuario where nombreUsuario=new.nombreUsuario);
+    set contador = (select COUNT(nombreUsuario) from usuario where lower(nombreUsuario)=lower(new.nombreUsuario));
 	IF(contador > 0) then
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nombre de usuario repetido';
 	END IF;

@@ -90,6 +90,13 @@
     align-items: center;
 }
 
+#botonSesion{
+    background-color: var(--color-rojo); 
+    color: white;
+    border-radius: 5px;
+}
+
+
 @media screen and (max-width: 1.280px){
 
 }  
