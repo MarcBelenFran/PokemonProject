@@ -149,14 +149,23 @@ INSERT INTO tipo (nombre) VALUES ("Planta");
 
 
 INSERT INTO privilegio (nombre) VALUES ("básico");
-INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
-INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
+INSERT INTO avatarUsuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
+INSERT INTO avatarUsuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
 
-INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Serperior", 100, 160, 130, 120, "../Imagenes/Serperior.png", 3);
-INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Floatzel", 100, 160, 100, 160, "../Imagenes/Floatzel.png", 1);
-INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Magmortar", 120, 150, 160, 90, "../Imagenes/Magmortar.png", 2);
+-- Agua
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Floatzel", 280, 193, 103, 211, "../Imagenes/Floatzel.png", 1);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Empoleon", 278, 159, 162, 112, "../Imagenes/Empoleon.png", 1);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Gyarados", 300, 229, 146, 150, "../Imagenes/Gyarados.png", 1);
 
+-- Fuego
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Magmortar", 260, 175, 125, 153, "../Imagenes/Magmortar.png", 2);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Arcanine", 290 , 202, 148, 175, "../Imagenes/Arcanine.png", 2);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Entei", 340, 211, 157, 184, "../Imagenes/Entei.png", 2);
 
+-- Planta
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Serperior", 260, 139, 175, 207, "../Imagenes/Serperior.png", 3);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Sceptile", 250, 157, 121, 220, "../Imagenes/Sceptile.png", 3);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Simisage", 260, 180, 117, 186, "../Imagenes/Simisage.png", 3);
 
 delimiter $$
 DROP TRIGGER IF EXISTS revisarUsuarios $$
