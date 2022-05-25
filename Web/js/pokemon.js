@@ -10,6 +10,16 @@ listaPokemon.forEach(elements => elements.addEventListener("click", event =>{
             event.target.setAttribute('id', 'pokemonSeleccionado');
         }
     }
+    
+    let contador = 1;
+    let continuar = false;
+    while(!continuar){
+        if(listaPokemon[contador].id == "pokemonSeleccionado"){
+            console.log(contador);
+            continuar = true;
+        }
+        continuar++; 
+    }
 }))
 
 
@@ -25,5 +35,5 @@ function actualizarTabla(){
 
     http.open("POST","http://localhost:8080/PokemonFBM/tablaPokemon", true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    http.send("filtroNombre="+document.getElementById("inputNombre").value+"&&filtroTipo="+document.getElementById("selectTipos").value);
+    http.send("filtroNombre="+document.getElementById("inputNombre").value);
 }

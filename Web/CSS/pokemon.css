@@ -60,10 +60,6 @@ main{
     padding: 5px;
 }
 
-#selectTipos{
-    padding: 5px;
-}
-
 #tablaPokemon{
     border-collapse: collapse;
     width: 100%;
@@ -92,7 +88,8 @@ main{
 @media screen and (max-width: 1.280px){
 
 }  
+
 @media only screen and (max-width: 768px) {
-    
+
 }
 

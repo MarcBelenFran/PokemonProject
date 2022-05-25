@@ -32,8 +32,8 @@
         </div>
         <ul id="ulNav" class="listaMenu">
             <li><a href="home.html" class="linkNav">Home</a></li>
-            <li><a href="Pokemon.html" class="linkNav" id="sitioActual">Pokémon</a></li>
-            <li><a href="MyO.html" class="linkNav">Movimientos y Objetos</a></li>
+            <li><a href="#" class="linkNav" id="sitioActual">Pokémon</a></li>
+            <li><a href="Movimientos.html" class="linkNav">Movimientos</a></li>
             <li><a href="Combate.html" class="linkNav">Combates</a></li>             
         </ul>
     </nav>
@@ -51,13 +51,7 @@
         <section id="menuPokemons">
             <div id="filtrosBusqueda">
                 <button type="button" onclick="actualizarTabla()" id="botonBusqueda">Buscar</button>
-                <input type="text" id="inputNombre" placeholder="Nombre del pokemon"> 
-                <select name="tipos" id="selectTipos">
-                    <option selected value="">Todos</option>
-                    <option value="Agua">Agua</option>
-                    <option value="Fuego">Fuego</option>
-                    <option value="Planta">Planta</option>
-                </select>
+                <input type="text" id="inputNombre" placeholder="Nombre del pokemon">
             </div>
         </section>
         <section id="infoPokemons">
@@ -67,7 +61,6 @@
         <script src="js/actualizarDatos.js"></script>
         <script src="js/responsive.js"></script>
         <script src="js/pokemon.js"></script>
-        <script src="js/tablaPokemon.js"></script>
     </main>
 </div>
 </body>
