@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS PokedexDB;
-CREATE DATABASE PokedexDB;
-USE PokedexDB;
+DROP DATABASE IF EXISTS pokedexdb;
+CREATE DATABASE pokedexdb;
+USE pokedexdb;
 
 CREATE TABLE pasiva(
 	id INTEGER auto_increment,
@@ -143,10 +143,20 @@ CREATE TABLE combate(
     FOREIGN KEY (equipo2_ID) REFERENCES equipo(id)
 );
 
+INSERT INTO tipo (nombre) VALUES ("Agua");
+INSERT INTO tipo (nombre) VALUES ("Fuego");
+INSERT INTO tipo (nombre) VALUES ("Planta");
+
 
 INSERT INTO privilegio (nombre) VALUES ("básico");
 INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
 INSERT INTO avatarusuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
+
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Serperior", 100, 160, 130, 120, "../Imagenes/Serperior.png", 3);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Floatzel", 100, 160, 100, 160, "../Imagenes/Floatzel.png", 1);
+INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen, tipoID) VALUES ("Magmortar", 120, 150, 160, 90, "../Imagenes/Magmortar.png", 2);
+
+
 
 delimiter $$
 DROP TRIGGER IF EXISTS revisarUsuarios $$

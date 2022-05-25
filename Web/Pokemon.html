@@ -42,7 +42,7 @@
             <ul id="listaEquipo">
                 <li class="pokemonEquipo"  id="pokemonSeleccionado"><img src="../Imagenes/Serperior.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/Floatzel.png" class="imagenPokemon"></li>
-                <li class="pokemonEquipo"><img src="../Imagenes/magmortar 1.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/Magmortar.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
@@ -50,22 +50,24 @@
         </section>
         <section id="menuPokemons">
             <div id="filtrosBusqueda">
-                <button type="button" onclick="" id="botonBusqueda">Buscar</button>
+                <button type="button" onclick="actualizarTabla()" id="botonBusqueda">Buscar</button>
                 <input type="text" id="inputNombre" placeholder="Nombre del pokemon"> 
                 <select name="tipos" id="selectTipos">
-                    <option disabled selected>Tipo</option>
-                    <option>Agua</option>
-                    <option>Fuego</option>
-                    <option>Planta</option>
+                    <option selected value="">Todos</option>
+                    <option value="Agua">Agua</option>
+                    <option value="Fuego">Fuego</option>
+                    <option value="Planta">Planta</option>
                 </select>
             </div>
         </section>
-        <section></section>
+        <section id="infoPokemons">
+        </section>
         <button id="botonSesion" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
         <br>
         <script src="js/actualizarDatos.js"></script>
         <script src="js/responsive.js"></script>
         <script src="js/pokemon.js"></script>
+        <script src="js/tablaPokemon.js"></script>
     </main>
 </div>
 </body>
