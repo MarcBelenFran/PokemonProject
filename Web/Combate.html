@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="CSS/header.css">
+    </link>
+    <link rel="stylesheet" href="CSS/general.css">
+    </link>
+    <link rel="stylesheet" href="CSS/combates.css">
+    </link>
+    <title>Pokedex FBM</title>
+</head>
+
+
+<body>
+    <header id="head-menu">
+        <div id="logoHeader">
+            <img src="../Imagenes/pokeboll.png" class="logoPokeball" alt="Logo de una pokeball"></img>
+            <h1 id="headerText">Pokédex FBM</h1>
+        </div>
+        <div id="logoEntrenador">
+            <div id="menuUsuario">
+                <div id="nombreUsuario"></div>
+            </div>
+            <div id="bordeEntrenador"><img src="../Imagenes/EntrenadorIncognito.png" id="avatarEntrenador"></div>
+        </div>
+    </header>
+    <nav id="menu">
+        <div id="botonNav">
+            <div id="centroBoton">
+
+            </div>
+        </div>
+        <ul id="ulNav" class="listaMenu">
+            <li><a href="home.html" class="linkNav">Home</a></li>
+            <li><a href="Pokemon.html" class="linkNav" >Pokémon</a></li>
+            <li><a href="Movimientos.html" class="linkNav">Movimientos</a></li>
+            <li><a href="#" class="linkNav" id="sitoActual" >Combates</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2 id="tituloH2">Lista de partidas disponibles</h2>
+        <section id="seccionCombates">
+            <table  id="tablaPartidas">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre Jugador</th>
+                    <th>Unirse</th>
+                </tr>
+            </table>
+        </section>
+        <button type="button" onclick="crearPartida()" id="nuevaPartida">Nueva Partida</button>
+    </main>
+    </div>
+</body>
+
+</html>

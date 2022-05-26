@@ -1,0 +1,38 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#seccionCombates{
+    width: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+#tablaPartidas{
+    width: 100%;
+    border-collapse: collapse;
+    align-items: center;
+}
+
+#tablaPartidas td, th{
+    border: solid 2px black;
+    text-align: center;
+}
+
+#tablaPartidas th{
+    background-color: rgb(194, 194 , 194);
+    font-size: 1.2em;
+}
+
+#tituloH2{
+    margin-top: 20px;
+}
+
+#nuevaPartida{
+    padding:  10px;
+    font-size: 1.2em;
+}
