@@ -55,7 +55,7 @@ function agregarPokemon(Pokemon){
 
     http.open("POST","http://localhost:8080/PokemonFBM/agregarPokemon", true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    http.send("idUsuario="+sessionStorage.getItem("id")+"&&nombrePokemon="+Pokemon);
+    http.send("idUsuario="+localStorage.getItem("id")+"&&nombrePokemon="+Pokemon);
 }
 
 

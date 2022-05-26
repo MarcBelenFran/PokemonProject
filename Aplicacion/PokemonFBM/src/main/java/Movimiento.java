@@ -11,7 +11,7 @@ public class Movimiento {
 	}
 
 	public int getAtaque() {return ataque;}
-	public void setAtaque(int daño) {this.ataque = daño;}
+	public void setAtaque(int dmg) {this.ataque = dmg;}
 	
 	public int getProbCritico() {return probCritico;}
 	public void setProbCritico(int probCritico) {this.probCritico = probCritico;}

@@ -27,7 +27,6 @@ public class tablaPokemon extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultado = "";
-		System.out.println(request.getParameter("filtroNombre"));
 		
 		try {
 			resultado = BuscadorPokemon.mostrarTabla(request.getParameter("filtroNombre"),request.getParameter("idUsuario"),request.getParameter("rutaImagen"));

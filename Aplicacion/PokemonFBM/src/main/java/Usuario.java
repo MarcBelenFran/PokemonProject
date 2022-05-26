@@ -62,38 +62,16 @@ public class Usuario {
 			String url = "jdbc:mysql://localhost:3306/pokedexdb";
 			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
 			Statement st = con.createStatement();
-			String query = ("select id, conectado from usuario where nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
+			String query = ("select id from usuario where nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
-				if(rs.getInt("conectado") == 0) {
 					resultado = rs.getString("id");
-					query = "update usuario set conectado = 1 where id = "+resultado;
-					st.executeUpdate(query);
-					
-				}else {
-					resultado = "conectado";
-				}
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 		return resultado;
-	}
-	
-	public void desconectarUsuario() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
-			Statement st = con.createStatement();
-			String query = ("update usuario set conectado = 0 where nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
-			st.executeUpdate(query);
-			
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
 	}
 	
 	public boolean validarDatosRegistro(){
@@ -105,13 +83,13 @@ public class Usuario {
 
 		
 		if(!Pattern.matches(patternNombre, this.getNombre())) {
-			System.out.println("nombre");
+			
 			
 		}else if(!Pattern.matches(patternCorreo, this.getCorreo())){
-			System.out.println("correo");
+			
 			
 		}else if(!Pattern.matches(patternContrasena, this.getContrasena())){
-			System.out.println("contraseña");
+			
 		}else {
 			validacion = true;
 		}
@@ -148,9 +126,9 @@ public class Usuario {
 
 		
 		if(!Pattern.matches(patternNombre, this.getNombre())) {
-			System.out.println("nombre");	
+			
 		}else if(!Pattern.matches(patternContrasena, this.getContrasena())){
-			System.out.println("contraseña");
+			
 		}else {
 			validacion = true;
 		}
