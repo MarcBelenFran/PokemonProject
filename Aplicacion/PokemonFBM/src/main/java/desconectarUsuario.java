@@ -1,4 +1,4 @@
-import java.io.IOException;
+
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,12 +6,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+
 /**
- * Servlet implementation class login
+ * Servlet implementation class desconectarUsuario
  */
-@WebServlet("/login")
-public class login extends HttpServlet {
+@WebServlet("/desconectarUsuario")
+public class desconectarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public desconectarUsuario() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,12 +36,8 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario(request.getParameter("nombre"), request.getParameter("contrasena"));
-		
-		if(!u.validarDatosLogin()) {
-			response.getWriter().append("validacion");
-		}else {
-			response.getWriter().append(u.logearUsuario());
-		}
+				
+		u.desconectarUsuario();
 		response.addHeader("Access-Control-Allow-Origin", "*");
 	}
 

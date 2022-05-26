@@ -37,6 +37,7 @@ CREATE TABLE usuario(
     correo VARCHAR(200),
     contrasena VARCHAR(20),
     avatar_ID INTEGER default 1,
+    conectado tinyint(1) default 0,
     privilegio_ID INTEGER default 1,
     PRIMARY KEY (id),
     FOREIGN KEY (avatar_ID) REFERENCES avatarUsuario(id),
@@ -44,20 +45,12 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE equipo(
-	id INTEGER auto_increment,
-    nombre VARCHAR(100),
-    usuario_ID INTEGER,
-    PRIMARY KEY (id),
-    FOREIGN KEY (usuario_ID) REFERENCES usuario(id)
+	idUsuario int,
+    idPokemon int,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(id),
+    FOREIGN KEY (idPokemon) REFERENCES pokemon(id)
 );
 
-CREATE TABLE equipoPokemon(
-	pokemon_ID INTEGER,
-    equipo_ID INTEGER,
-    PRIMARY KEY (pokemon_ID, equipo_ID),
-    FOREIGN KEY (pokemon_ID) REFERENCES pokemon(id),
-    FOREIGN KEY (equipo_ID) REFERENCES equipo(id)
-);
 
 CREATE TABLE movimiento(
 	id INTEGER auto_increment,

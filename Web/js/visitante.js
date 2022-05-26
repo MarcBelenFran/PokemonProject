@@ -32,12 +32,15 @@ function login() {
 
         http.onreadystatechange = function () {
             if (http.readyState == 4 && http.status == 200) {
-                if (http.responseText == "true") {
+                if (http.responseText == "conectado") {
+                    document.getElementById("resultado").innerHTML = "Usuario ya conectado";
+                } else if(http.responseText == "validacion") {
+                    document.getElementById("resultado").innerHTML = "ERROR: Buen intento crack";
+                }else if(http.responseText != ""){
                     window.location.href = "home.html";
                     sessionStorage.setItem("usuario", document.getElementById("nombre").value);
                     sessionStorage.setItem("contrasena", document.getElementById("contrasena").value);
-                } else if(http.responseText == "validacion") {
-                    document.getElementById("resultado").innerHTML = "ERROR: Buen intento crack";
+                    sessionStorage.setItem("id", http.responseText);
                 }
                 else {
                     document.getElementById("resultado").innerHTML = "ERROR: Fallo en el nombre de usuario o contraseña";
