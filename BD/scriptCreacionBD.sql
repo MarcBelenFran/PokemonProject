@@ -37,7 +37,6 @@ CREATE TABLE usuario(
     correo VARCHAR(200),
     contrasena VARCHAR(20),
     avatar_ID INTEGER default 1,
-    conectado tinyint(1) default 0,
     privilegio_ID INTEGER default 1,
     PRIMARY KEY (id),
     FOREIGN KEY (avatar_ID) REFERENCES avatarUsuario(id),

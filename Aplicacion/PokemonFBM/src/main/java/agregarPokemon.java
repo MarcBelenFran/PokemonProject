@@ -37,8 +37,6 @@ public class agregarPokemon extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultado = "";
-		System.out.println(request.getParameter("idUsuario"));
-		System.out.println(request.getParameter("nombrePokemon"));
 		
 		try {
 			resultado = BuscadorPokemon.agregarPokemon(request.getParameter("idUsuario"), request.getParameter("nombrePokemon"));

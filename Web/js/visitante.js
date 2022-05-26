@@ -1,5 +1,5 @@
 window.onload = function () {
-    if (sessionStorage.getItem("usuario") != null) {
+    if (localStorage.getItem("usuario") != null) {
         window.location.href = "home.html";
     }
 }
@@ -38,9 +38,9 @@ function login() {
                     document.getElementById("resultado").innerHTML = "ERROR: Buen intento crack";
                 }else if(http.responseText != ""){
                     window.location.href = "home.html";
-                    sessionStorage.setItem("usuario", document.getElementById("nombre").value);
-                    sessionStorage.setItem("contrasena", document.getElementById("contrasena").value);
-                    sessionStorage.setItem("id", http.responseText);
+                    localStorage.setItem("usuario", document.getElementById("nombre").value);
+                    localStorage.setItem("contrasena", document.getElementById("contrasena").value);
+                    localStorage.setItem("id", http.responseText);
                 }
                 else {
                     document.getElementById("resultado").innerHTML = "ERROR: Fallo en el nombre de usuario o contraseña";
