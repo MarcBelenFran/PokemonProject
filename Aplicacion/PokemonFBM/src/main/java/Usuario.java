@@ -2,22 +2,32 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.*;
 
 public class Usuario {
 	private String nombre;
 	private String correo;
 	private String contrasena;
+	public boolean cambioPokemon = false;
+	private ArrayList<Pokemon> equipo;
 	
 	// Constructor
 	public Usuario(String nombre, String contrasena) {
-		this(nombre, null, contrasena);
+		this(nombre, null, contrasena, null);
+	}
+	
+	public Usuario(String nombre, String correo, String contrasena) {
+		this(nombre, correo, contrasena, null);
 	}
 
-	public Usuario(String nombre, String correo, String contrasena) {
+	public Usuario(String nombre, String correo, String contrasena, ArrayList<Pokemon> equipo) {
 		this.setNombre(nombre);
 		this.setCorreo(correo);
 		this.setContrasena(contrasena);
+		this.equipo = new ArrayList<Pokemon>();
+		this.nombre = nombre;
+		this.equipo = equipo;
 	}
 	
 	
@@ -182,5 +192,20 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}
 	
+	public ArrayList<Pokemon> getEquipo() {
+		return equipo;
+	}
+	
+	public void setEquipo(ArrayList<Pokemon> equipo) {
+		this.equipo = equipo;
+	}
+
+	public boolean isCambioPokemon() {
+		return cambioPokemon;
+	}
+
+	public void setCambioPokemon(boolean cambioPokemon) {
+		this.cambioPokemon = cambioPokemon;
+	}
 	
 }
