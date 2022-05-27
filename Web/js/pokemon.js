@@ -58,6 +58,22 @@ function agregarPokemon(Pokemon){
     http.send("idUsuario="+localStorage.getItem("id")+"&&nombrePokemon="+Pokemon);
 }
 
+function quitarPokemon(Pokemon){
+    let http = new XMLHttpRequest();
+
+    http.onreadystatechange = function(){
+        if (http.readyState==4 && http.status==200){
+            document.getElementById("pokemonSeleccionado").firstChild.src = "../Imagenes/pokemonNoElegido.png";
+            document.querySelector('table').remove();
+        }
+    }
+
+
+    http.open("POST","http://localhost:8080/PokemonFBM/quitarPokemon", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id")+"&&nombrePokemon="+Pokemon);
+}
+
 
 function actualizarTabla(){
     let http = new XMLHttpRequest();
@@ -71,5 +87,5 @@ function actualizarTabla(){
 
     http.open("POST","http://localhost:8080/PokemonFBM/tablaPokemon", true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    http.send("filtroNombre="+document.getElementById("inputNombre").value+"&&idUsuario="+sessionStorage.getItem("id")+"&&rutaImagen="+obtenerImagenSeleccionado());
+    http.send("filtroNombre="+document.getElementById("inputNombre").value+"&&idUsuario="+localStorage.getItem("id")+"&&rutaImagen="+obtenerImagenSeleccionado());
 }

@@ -1,8 +1,11 @@
 window.onload = function(){
-    if(localStorage.getItem("usuario") != null){
+    if(localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null){
         actualizarDatos();
+        imagenesEquipoPokemon();
         document.getElementById("botonSesion").style.display = 'block';
         document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("usuario");
+    }else if(document.getElementById("botonesVisitante") == null){
+        window.location.href = "home.html";
     }
 }
 
@@ -23,7 +26,25 @@ function actualizarDatos(){
     http.send("nombre="+localStorage.getItem("usuario")+"&&contrasena="+localStorage.getItem("contrasena"));
 }
 
-function cerrarSesion(){
-    localStorage.clear();
-    window.location.href = "home.html";   
+function imagenesEquipoPokemon(){
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        let elementosImagen = document.getElementsByClassName("imagenPokemon");
+        if(http.readyState == 4 && http.status == 200){
+            let arrayRutas = JSON.parse(http.responseText);
+            for(let i = 0; i < arrayRutas.array.length;i++){
+                elementosImagen[i].src = arrayRutas.array[i];
+            }
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/imagenesPokemon", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
 }
+
+function cerrarSesion(){
+        localStorage.clear();
+        window.location.href = "home.html";
+    }

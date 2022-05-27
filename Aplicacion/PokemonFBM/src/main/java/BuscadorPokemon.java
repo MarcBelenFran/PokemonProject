@@ -16,10 +16,10 @@ public class BuscadorPokemon {
 		boolean eliminar = false;
 		
 		if(nombre.equals("") && rutaImagen.equals("../Imagenes/pokemonNoElegido.png")) {
-			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p";
+			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p where p.id not in (select p.id from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"')";
 			
 		}else if (!(nombre.equals("")) && rutaImagen.equals("../Imagenes/pokemonNoElegido.png")){
-			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p WHERE nombre like '"+nombre+"%'";
+			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p WHERE nombre like '"+nombre+"%' and p.id not in (select p.id from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"')";
 			
 		} else if (nombre.equals("") && !(rutaImagen.equals("../Imagenes/pokemonNoElegido.png"))){
 			query = "SELECT p.nombre, p.vida, p.ataque, p.defensa, p.velocidad FROM pokemon p, equipo e, usuario u where p.id=e.idPokemon and u.id = e.idUsuario and p.rutaImagen = '"+rutaImagen+"'";
@@ -29,7 +29,7 @@ public class BuscadorPokemon {
 			query = "SELECT p.nombre, p.vida, p.ataque, p.defensa, p.velocidad FROM pokemon p, equipo e, usuario u where p.id=e.idPokemon and u.id = e.idUsuario and p.rutaImagen = '"+rutaImagen+"' and p.nombre like '"+nombre+"%'";
 			eliminar = true;
 		}
-		
+	
 		
 		ResultSet rs = st.executeQuery(query);
 		
@@ -57,7 +57,8 @@ public class BuscadorPokemon {
 				resultado += "<td><button type=\"button\" onclick=\"agregarPokemon('"+nombrePokemon+"')\">Agregar</button></td>"
 							+"</tr>";
 			}else {
-				resultado += "<td><button type=\"button\" onclick='quitarPokemon()'>Quitar</button></td>"
+				String nombrePokemon = rs.getString("nombre");
+				resultado += "<td><button type=\"button\" onclick=\"quitarPokemon('"+nombrePokemon+"')\">Quitar</button></td>"
 						+"</tr>";
 			}
 						
@@ -88,6 +89,47 @@ public class BuscadorPokemon {
 		return rutaImagen;
 	}
 	
+	public static String quitarPokemon(String idUsuario, String nombrePokemon) {
+		String rutaImagen = "";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Statement st = con.createStatement();
+			String query = "DELETE FROM equipo where idUsuario = '"+idUsuario+"' and idPokemon = (select id from pokemon where nombre = '"+nombrePokemon+"')";
+			st.executeUpdate(query);
+			rutaImagen = BuscadorPokemon.buscadorImagen(nombrePokemon);
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		return rutaImagen;
+	}
+	
+	public static String imagenesEquipo(String idUsuario) {
+		String resultado = "{ \"array\": [";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Statement st = con.createStatement();
+			String query = "SELECT rutaImagen from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"' order by p.id";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				resultado+= "\""+rs.getString("rutaImagen")+"\", ";
+			}
+			
+			resultado = resultado.substring(0,resultado.length()-2)+"]}";
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultado;
+	}
 	
 	// METODOS DE APOYO
 	public static String buscadorID(String nombrePokemon) {
