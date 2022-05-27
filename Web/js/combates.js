@@ -1,5 +1,4 @@
 
-
 function actualizarDatos(){
     let http = new XMLHttpRequest();
  
@@ -14,21 +13,7 @@ function actualizarDatos(){
 }
 
 function crearPartida(){
-        let http = new XMLHttpRequest();
-        Swal.fire({
-            title: '<strong><b>Esperando rival...</b></strong>',
-             icon: 'question',
-             confirmButtonColor: '#E51515',
-             confirmButtonText:
-            'Cancelar la Partida',
-            }).then(eliminarPartida())
-    http.onreadystatechange = function(){
-        
-    }
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarDatos", true);
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send("nombre="+sessionStorage.getItem("usuario"));
 }
 
 function eliminarPartida(){
@@ -42,11 +27,3 @@ function eliminarPartida(){
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("nombre="+sessionStorage.getItem("usuario"));
 }
-
-Swal.fire({
-  title: '<strong><b>Esperando rival...</b></strong>',
-  icon: 'question',
-  confirmButtonColor: '#E51515',
-  confirmButtonText:
-    'Cancelar la Partida',
-}).then(eliminarPartida())

@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="CSS/header.css"></link>
     <link rel="stylesheet" href="CSS/general.css"></link>
     <link rel="stylesheet" href="CSS/combates.css"></link>
+    <link rel="stylesheet" href="CSS/estiloEquipo.css"></link>
     <title>Pokedex FBM</title>
 </head>
 
 
 <body>
-    <header id="head-menu">
+    <header id="head-menu"> 
         <div id="logoHeader">
             <img src="../Imagenes/pokeboll.png" class="logoPokeball" alt="Logo de una pokeball"></img>
             <h1 id="headerText">Pokédex FBM</h1>
@@ -39,6 +40,16 @@
         </ul>
     </nav>
     <main>
+        <section id="equipo">
+            <ul id="listaEquipo">
+                <li class="pokemonEquipo"  id="pokemonSeleccionado"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+            </ul>
+        </section>
         <h2 id="tituloH2">Lista de partidas disponibles</h2>
         <section id="seccionCombates">
             <table  id="tablaPartidas">
@@ -50,8 +61,11 @@
             </table>
         </section>
         <button type="button" onclick="crearPartida()" id="nuevaPartida">Nueva Partida</button>
+        <button id="botonSesion" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
     </main>
     </div>
+    <script src="js/pokemon.js"></script>
+    <script src="js/combates.js"></script>
     <script src="js/usuario.js"></script>
     <script src="js/responsive.js"></script>
 </body>
