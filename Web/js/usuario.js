@@ -1,9 +1,9 @@
 window.onload = function(){
     if(localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null){
         actualizarDatos();
-        imagenesEquipoPokemon();
-        document.getElementById("botonSesion").style.display = 'block';
+        imagenesEquipoPokemon();        
         document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("usuario");
+        document.getElementById("botonSesion").style.display = 'block';
     }else if(document.getElementById("botonesVisitante") == null){
         window.location.href = "home.html";
     }
