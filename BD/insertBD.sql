@@ -1,8 +1,7 @@
 use pokedexdb;
 
-INSERT INTO privilegio (nombre) VALUES ("básico");
-INSERT INTO avatarUsuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChico.png", 1);
-INSERT INTO avatarUsuario (rutaImagen, privilegio_ID) VALUES ("../Imagenes/EntrenadorBaseChica.png", 1);
+INSERT INTO avatarUsuario (rutaImagen) VALUES ("../Imagenes/EntrenadorBaseChico.png");
+INSERT INTO avatarUsuario (rutaImagen) VALUES ("../Imagenes/EntrenadorBaseChica.png");
 
 -- Agua
 INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen) VALUES ("Floatzel", 280, 193, 103, 211, "../Imagenes/Floatzel.png");

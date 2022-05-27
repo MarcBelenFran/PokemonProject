@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS pokedexdb;
 CREATE DATABASE pokedexdb;
 USE pokedexdb;
 
-CREATE TABLE privilegio(
-	id INTEGER auto_increment,
-    nombre VARCHAR(100),
-    PRIMARY KEY (id)
-);
-
-
 CREATE TABLE pokemon(
 	id INTEGER auto_increment,
     vida INTEGER,
@@ -23,9 +16,7 @@ CREATE TABLE pokemon(
 CREATE TABLE avatarUsuario(
 	id INTEGER auto_increment,
     rutaImagen VARCHAR(150),
-    privilegio_ID INTEGER,
-    PRIMARY KEY (id),
-    FOREIGN KEY (privilegio_ID) REFERENCES privilegio(id)
+    PRIMARY KEY (id)
 );
 
 
@@ -37,17 +28,21 @@ CREATE TABLE usuario(
     correo VARCHAR(200),
     contrasena VARCHAR(20),
     avatar_ID INTEGER default 1,
-    privilegio_ID INTEGER default 1,
     PRIMARY KEY (id),
-    FOREIGN KEY (avatar_ID) REFERENCES avatarUsuario(id),
-    FOREIGN KEY (privilegio_ID) REFERENCES privilegio(id)
+    FOREIGN KEY (avatar_ID) REFERENCES avatarUsuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE equipo(
 	idUsuario int,
     idPokemon int,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(id),
+    FOREIGN KEY (idUsuario) REFERENCES usuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (idPokemon) REFERENCES pokemon(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
@@ -63,8 +58,12 @@ CREATE TABLE movimientoPokemon(
 	movimiento_ID INTEGER auto_increment,
     pokemon_ID INTEGER,
     PRIMARY KEY (movimiento_ID, pokemon_ID),
-    FOREIGN KEY (movimiento_ID) REFERENCES movimiento(id),
+    FOREIGN KEY (movimiento_ID) REFERENCES movimiento(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (pokemon_ID) REFERENCES pokemon(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE combate(
@@ -73,9 +72,15 @@ CREATE TABLE combate(
     jugador1 INTEGER,
     jugador2 INTEGER,
     PRIMARY KEY (id),
-    FOREIGN KEY (ganador) REFERENCES usuario(id),
-    FOREIGN KEY (jugador1) REFERENCES usuario(id),
+    FOREIGN KEY (ganador) REFERENCES usuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (jugador1) REFERENCES usuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (jugador2) REFERENCES usuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE turnos(
@@ -84,8 +89,16 @@ CREATE TABLE turnos(
     idUsuario int,
     idMovimiento int,
     idPokemon int,
-    FOREIGN KEY(idCombate) REFERENCES combate(id),
-    FOREIGN KEY(idUsuario) REFERENCES usuario(id),
-    FOREIGN KEY(idMovimiento) REFERENCES movimiento(id),
+    FOREIGN KEY(idCombate) REFERENCES combate(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY(idMovimiento) REFERENCES movimiento(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY(idPokemon) REFERENCES pokemon(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
