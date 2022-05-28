@@ -52,6 +52,13 @@
         </section>
         <h2 id="tituloH2">Lista de partidas disponibles</h2>
         <section id="seccionCombates">
+            <div id="popup">
+                <div id="menuEspera">
+                    <img src="../Imagenes/esperaCombates.gif" id="cargaCombate">
+                    <h2 id="textoEspera">Buscando rival ...</h2>
+                    <button id="cerrarMenu" type="button" onclick="cancelarCombate()">Cancelar combate</button>
+               </div>
+             </div>
             <table  id="tablaPartidas">
                 <tr>
                     <th>Id</th>
@@ -61,6 +68,7 @@
             </table>
         </section>
         <button type="button" onclick="crearPartida()" id="nuevaPartida">Nueva Partida</button>
+
         <button id="botonSesion" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
     </main>
     </div>

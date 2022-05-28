@@ -1,4 +1,3 @@
-
 function actualizarDatos(){
     let http = new XMLHttpRequest();
  
@@ -13,7 +12,16 @@ function actualizarDatos(){
 }
 
 function crearPartida(){
+    let popup = document.getElementById('popup');
 
+    popup.style.display = "flex";
+    
+}
+
+function cancelarCombate(){
+    let popup = document.getElementById('popup');
+
+    popup.style.display = "none";
 }
 
 function eliminarPartida(){
