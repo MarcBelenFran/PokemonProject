@@ -1,3 +1,4 @@
+package clasesApoyo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -131,7 +132,7 @@ public class BuscadorPokemon {
 		return resultado;
 	}
 	
-	// METODOS DE APOYO
+	
 	public static String buscadorID(String nombrePokemon) {
 		String id = "";
 		

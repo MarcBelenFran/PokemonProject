@@ -76,3 +76,12 @@ main{
   #textoEspera{
       color: white;
   }
+
+@media screen and (max-width: 1.280px){
+
+}  
+@media only screen and (max-width: 768px) {
+    #tablaPartidas th{
+        font-size: 1em;
+    }
+}

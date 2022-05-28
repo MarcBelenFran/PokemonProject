@@ -1,3 +1,4 @@
+package clasesCombate;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -98,24 +99,24 @@ public class Usuario {
 	}
 	
 	public String  actualizarDatos() {
-		String rutaImagen = "../Imagenes/EntrenadorIncognito.png";
+		String resultado = "../Imagenes/EntrenadorIncognito.png";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/pokedexdb";
 			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
 			Statement st = con.createStatement();
-			String query = ("select rutaImagen from usuario, avatarUsuario where usuario.avatar_ID = avatarUsuario.id and nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
+			String query = ("select rutaImagen, numVictorias from usuario, avatarUsuario where usuario.avatar_ID = avatarUsuario.id and nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
-				rutaImagen = rs.getString("rutaImagen");
+				resultado = rs.getString("rutaImagen")+",Victorias: "+rs.getString("numVictorias");
 			}
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		return rutaImagen;
+		return resultado;
 	}
 	
 	public boolean validarDatosLogin(){

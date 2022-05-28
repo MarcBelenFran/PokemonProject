@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <link rel="stylesheet" href="CSS/header.css"></link>
     <link rel="stylesheet" href="CSS/general.css"></link>
-    <link rel="stylesheet" href="CSS/combates.css"></link>
+    <link rel="stylesheet" href="CSS/movimientos.css"></link>
     <link rel="stylesheet" href="CSS/estiloEquipo.css"></link>
     <title>Pokedex FBM</title>
 </head>
@@ -36,14 +36,14 @@
         <ul id="ulNav" class="listaMenu">
             <li><a href="home.html" class="linkNav">Home</a></li>
             <li><a href="Pokemon.html" class="linkNav" >Pokémon</a></li>
-            <li><a href="Movimientos.html" class="linkNav">Movimientos</a></li>
-            <li><a href="#" class="linkNav" id="sitioActual" >Combates</a></li>
+            <li><a href="#" class="linkNav" id="sitioActual">Movimientos</a></li>
+            <li><a href="Combate.html" class="linkNav">Combates</a></li>
         </ul>
     </nav>
     <main>
         <section id="equipo">
             <ul id="listaEquipo">
-                <li class="pokemonEquipo"  id="pokemonSeleccionado"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
@@ -51,29 +51,36 @@
                 <li class="pokemonEquipo"><img src="../Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
             </ul>
         </section>
-        <h2 id="tituloH2">Lista de partidas disponibles</h2>
-        <section id="seccionCombates">
-            <div id="popup">
-                <div id="menuEspera">
-                    <img src="../Imagenes/esperaCombates.gif" id="cargaCombate">
-                    <h2 id="textoEspera">Buscando rival ...</h2>
-                    <button id="cerrarMenu" type="button" onclick="cancelarCombate()">Cancelar combate</button>
-               </div>
-             </div>
-            <table  id="tablaPartidas">
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre Jugador</th>
-                    <th>Unirse</th>
-                </tr>
-            </table>
+        <section id="menuMovimientos">
+            <div id="infoPokemon">
+                <div id="nombrePokemon">Hola</div>
+                <img id="pokemonMovimiento" src="">
+            </div>
+            <div id="Movimientos">
+                <div class="movimiento">
+                </div>
+
+                <div class="movimiento">
+                </div>
+
+                <div class="movimiento">
+                </div>
+                
+                <div class="movimiento">
+                </div>
+            </div>
+            <div id="botonesSeleccion">
+                <button class="boton">Añadir</button>
+                <button class="boton">Quitar</button>
+            </div>
         </section>
-        <button type="button" onclick="crearPartida()" id="nuevaPartida">Nueva Partida</button>
+       
+        <h2 id="textoGuia">SELECCIONA UN POKEMON PARA QUITAR O AÑADIR MOVIMIENTOS</h2>
 
         <button id="botonSesion" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
     </main>
     </div>
-    <script src="js/combates.js"></script>
+    <script src="js/movimientos.js"></script>
     <script src="js/usuario.js"></script>
     <script src="js/responsive.js"></script>
 </body>

@@ -8,9 +8,22 @@
     width: 30%;
 }
 
+#datosUsuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
 #nombreUsuario{
-    margin-right: 10px;
     font-size: 2em;
+    font-weight: bolder;
+    color: black;
+}
+
+#numVictorias{
+    font-size: 1.5em;
     font-weight: bolder;
     color: black;
 }

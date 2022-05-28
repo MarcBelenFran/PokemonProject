@@ -10,14 +10,6 @@ listaPokemon.forEach(elements => elements.addEventListener("click", event =>{
         }
     }
     
-    let contador = 1;
-    let continuar = false;
-    while(!continuar){
-        if(listaPokemon[contador].id == "pokemonSeleccionado"){
-            continuar = true;
-        }
-        continuar++; 
-    }
 
     obtenerImagenSeleccionado();
 }))

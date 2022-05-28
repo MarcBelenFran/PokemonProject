@@ -1,9 +1,10 @@
+package clasesCombate;
 
 public class Pokemon {
 	
 	private String nombre;
 	private String tipo;
-	// HP, DEFENSA, DAÑO, VELOCIDAD
+	// HP, DEFENSA, DMG, VELOCIDAD
 	private int[] stats;
 	private Movimiento[] movimiento;
 	private static boolean cambio = true;

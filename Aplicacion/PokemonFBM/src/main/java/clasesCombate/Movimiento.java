@@ -1,3 +1,4 @@
+package clasesCombate;
 
 public class Movimiento {
 	private static int id = 0;

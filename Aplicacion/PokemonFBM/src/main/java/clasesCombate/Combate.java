@@ -1,3 +1,4 @@
+package clasesCombate;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -22,17 +23,17 @@ public class Combate {
 		
 			escritor.write(primero.getNombre() + " ha usado " + primeroM + "!");
 			
-			//CALCULO DE DAÑOS
+			//CALCULO DE DMG
 			int primerDmg = calculoDmg(primero, primeroM, segundo);
 			int segundoDmg =  calculoDmg(segundo, segundoM, primero);
 			
 			//ATACA EL PRIMER POKEMON
 			if((int)(Math.random() * 100 + 1) > primeroM.getProbCritico() ) {
 				primerDmg = (int) (primerDmg*1.33);
-				escritor.write("\n" + primero.getNombre() + " ha realizado un DAÑO CRÍTICO de " + primerDmg + " a " + segundo.getNombre() + "!"); 
+				escritor.write("\n" + primero.getNombre() + " ha realizado un critico de " + primerDmg + " a " + segundo.getNombre() + "!"); 
 				segundo.takeDmg(primerDmg);
 			}else {
-				escritor.write("\n" + primero.getNombre() + " ha realizado un daño de " + primerDmg + " a " + segundo.getNombre() + "!"); ; 
+				escritor.write("\n" + primero.getNombre() + " ha realizado un ataque de " + primerDmg + " a " + segundo.getNombre() + "!"); ; 
 				segundo.takeDmg(primerDmg);
 			}
 			
@@ -66,10 +67,10 @@ public class Combate {
 			//ATACA EL SEGUNDO POKEMON
 			if((int)(Math.random() * 100 + 1) > segundoM.getProbCritico() ) {
 				segundoDmg = (int) (segundoDmg*1.33);
-				escritor.write("\n" + segundo.getNombre() + " ha realizado un DAÑO CRÍTICO de " + segundoDmg + " a " + primero.getNombre() + "!");
+				escritor.write("\n" + segundo.getNombre() + " ha realizado un critico de " + segundoDmg + " a " + primero.getNombre() + "!");
 				primero.takeDmg(segundoDmg);
 			}else {
-				escritor.write("\n" + segundo.getNombre() + " ha realizado un daño de " + segundoDmg + " a " + primero.getNombre() + "!"); 
+				escritor.write("\n" + segundo.getNombre() + " ha realizado un ataque de " + segundoDmg + " a " + primero.getNombre() + "!"); 
 				primero.takeDmg(segundoDmg);
 			}
 			
@@ -109,16 +110,16 @@ public class Combate {
 			
 			escritor.write(ataca.getNombre() + " ha usado " + ataque + "!");
 			
-			//CALCULO DE DAÑOS
+			//CALCULO DE DMG
 			int primerDmg = calculoDmg(ataca, ataque, defiende);
 			
 			//ATACA EL POKEMON
 			if((int)(Math.random() * 100 + 1) > ataque.getProbCritico() ) {
 				primerDmg = (int) (primerDmg*1.33);
-				escritor.write("\n" + ataca.getNombre() + " ha realizado un DAÑO CRÍTICO de " + primerDmg + " a " + defiende.getNombre() + "!"); 
+				escritor.write("\n" + ataca.getNombre() + " ha realizado un critico de " + primerDmg + " a " + defiende.getNombre() + "!"); 
 				defiende.takeDmg(primerDmg);
 			}else {
-				escritor.write("\n" + ataca.getNombre() + " ha realizado un daño de " + primerDmg + " a " + defiende.getNombre() + "!"); ; 
+				escritor.write("\n" + ataca.getNombre() + " ha realizado un ataque de " + primerDmg + " a " + defiende.getNombre() + "!"); ; 
 				defiende.takeDmg(primerDmg);
 			}
 			

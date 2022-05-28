@@ -1,5 +1,5 @@
 window.onload = function () {
-    if (localStorage.getItem("usuario") != null) {
+    if (localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null) {
         window.location.href = "home.html";
     }
 }

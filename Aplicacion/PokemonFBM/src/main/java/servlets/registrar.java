@@ -1,5 +1,7 @@
+package servlets;
 import java.io.IOException;
 
+import clasesCombate.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
