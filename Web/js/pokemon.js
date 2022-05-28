@@ -33,6 +33,7 @@ function obtenerImagenSeleccionado(){
     return resultado
 }
 
+
 function agregarPokemon(Pokemon){
     let http = new XMLHttpRequest();
 

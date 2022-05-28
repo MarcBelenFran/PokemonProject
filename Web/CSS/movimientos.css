@@ -6,6 +6,52 @@ main{
     gap: 20px;
 }
 
+#tablaMovimientos{
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#tablaMovimientos th{
+    background-color: rgb(153, 153, 153);
+    color: black;
+}
+
+#tablaMovimientos td,th{
+    border: solid 2px black;
+    padding: 10px;
+    text-align: center;
+}
+
+#tablaMovimientos td{
+    background-color: white;
+}
+
+#popup{
+    display: none;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuTabla{
+    width: 700px;
+    height: 700px;
+    background-color: #181B1D;
+    border: 5px #D61114 solid;
+    display: grid;
+    grid-template-columns: auto;
+    place-items: center;
+    border-radius: 15px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
 #menuMovimientos{
     width: 75%;
     height: 350px;
@@ -19,6 +65,8 @@ main{
     display: none;
     gap:20px;
 }
+
+
 
 #infoPokemon{
     display: flex;
@@ -68,6 +116,15 @@ main{
     border: 2px solid black;
     border-radius: 5px;
  }
+
+ #salirMenu{
+    padding: 10px;
+    font-size: 2em;
+    min-width: 300px;
+    max-width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
 
  #botonesSeleccion{
     display: flex;

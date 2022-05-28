@@ -34,18 +34,6 @@ CREATE TABLE usuario(
         ON UPDATE CASCADE
 );
 
-CREATE TABLE equipo(
-	idUsuario int,
-    idPokemon int,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(id)
-		ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (idPokemon) REFERENCES pokemon(id)
-		ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-
 CREATE TABLE movimiento(
 	id INTEGER auto_increment,
     nombre VARCHAR(100),
@@ -54,17 +42,34 @@ CREATE TABLE movimiento(
     PRIMARY KEY (id)
 );
 
-CREATE TABLE movimientoPokemon(
-	movimiento_ID INTEGER auto_increment,
-    pokemon_ID INTEGER,
-    PRIMARY KEY (movimiento_ID, pokemon_ID),
-    FOREIGN KEY (movimiento_ID) REFERENCES movimiento(id)
+CREATE TABLE equipo(
+	idUsuario int,
+    idPokemon int,
+    movimiento1 int,
+    movimiento2 int,
+    movimiento3 int,
+    movimiento4 int,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (pokemon_ID) REFERENCES pokemon(id)
+    FOREIGN KEY (idPokemon) REFERENCES pokemon(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	FOREIGN KEY (movimiento1) REFERENCES movimiento(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	FOREIGN KEY (movimiento2) REFERENCES movimiento(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	FOREIGN KEY (movimiento3) REFERENCES movimiento(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	FOREIGN KEY (movimiento4) REFERENCES movimiento(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+
 
 CREATE TABLE combate(
 	id INTEGER auto_increment,
@@ -102,3 +107,12 @@ CREATE TABLE turnos(
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+SELECT * 
+from movimiento 
+where id not in (select m.id from movimiento m, equipo e, usuario u 
+						where (m.id = e.movimiento1 or m.id = e.movimiento2 or m.id = e.movimiento3 or m.id=e.movimiento4) 
+						and e.idUsuario = u.id
+                        and u.id = 1
+                        and e.idPokemon = 1)
+order by id;

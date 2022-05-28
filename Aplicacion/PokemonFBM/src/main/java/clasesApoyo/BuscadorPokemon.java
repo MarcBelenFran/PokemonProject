@@ -172,4 +172,24 @@ public class BuscadorPokemon {
 		
 		return rutaImagen;
 	}
+	
+	public static String idImagen(String rutaImagen) {
+		String id = "";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Statement st = con.createStatement();
+			String query = "SELECT id from pokemon where rutaImagen = '"+rutaImagen+"'";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				id = rs.getString("id");
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return id;
+	}
 }
