@@ -107,12 +107,3 @@ CREATE TABLE turnos(
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 );
-
-SELECT * 
-from movimiento 
-where id not in (select m.id from movimiento m, equipo e, usuario u 
-						where (m.id = e.movimiento1 or m.id = e.movimiento2 or m.id = e.movimiento3 or m.id=e.movimiento4) 
-						and e.idUsuario = u.id
-                        and u.id = 1
-                        and e.idPokemon = 1)
-order by id;

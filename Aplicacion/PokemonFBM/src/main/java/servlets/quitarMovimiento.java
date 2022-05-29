@@ -1,6 +1,5 @@
 package servlets;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import clasesApoyo.BuscadorMovimientos;
 import clasesApoyo.BuscadorPokemon;
 
 /**
- * Servlet implementation class tablaMovimientos
+ * Servlet implementation class quitarMovimiento
  */
-@WebServlet("/tablaMovimientos")
-public class tablaMovimientos extends HttpServlet {
+@WebServlet("/quitarMovimiento")
+public class quitarMovimiento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tablaMovimientos() {
+    public quitarMovimiento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,16 +38,15 @@ public class tablaMovimientos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado = "";
 		
 		try {
-			resultado = BuscadorMovimientos.mostrarTabla(request.getParameter("idUsuario"),BuscadorPokemon.idImagen(request.getParameter("imagenPokemon")));
+			BuscadorMovimientos.quitarMovimiento(request.getParameter("idUsuario"), BuscadorPokemon.idImagen(request.getParameter("imagenPokemon")),
+					request.getParameter("numeroMovimiento"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.getWriter().append(resultado);
 	}
 
 }
