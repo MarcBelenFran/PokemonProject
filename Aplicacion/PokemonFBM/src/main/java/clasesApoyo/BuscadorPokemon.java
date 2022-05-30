@@ -8,9 +8,9 @@ import java.sql.Statement;
 public class BuscadorPokemon {
 	
 	public static String mostrarTabla(String nombre, String idUsuario, String rutaImagen) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/pokedexdb";
-		Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+		Class.forName(datosMysql.driver);
+		String url = datosMysql.driverUrl;
+		Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 		Statement st = con.createStatement();
 		
 		String query = "";
@@ -74,9 +74,9 @@ public class BuscadorPokemon {
 		String rutaImagen = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "INSERT INTO equipo(idUsuario, idPokemon) VALUES ('"+idUsuario+"','"+BuscadorPokemon.buscadorID(nombrePokemon)+"')";
 			st.executeUpdate(query);
@@ -94,9 +94,9 @@ public class BuscadorPokemon {
 		String rutaImagen = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "DELETE FROM equipo where idUsuario = '"+idUsuario+"' and idPokemon = (select id from pokemon where nombre = '"+nombrePokemon+"')";
 			st.executeUpdate(query);
@@ -114,9 +114,9 @@ public class BuscadorPokemon {
 		String resultado = "{ \"array\": [";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "SELECT rutaImagen from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"' order by p.id";
 			ResultSet rs = st.executeQuery(query);
@@ -137,9 +137,9 @@ public class BuscadorPokemon {
 		String id = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "SELECT id from pokemon where nombre = '"+nombrePokemon+"'";
 			ResultSet rs = st.executeQuery(query);
@@ -157,9 +157,9 @@ public class BuscadorPokemon {
 		String rutaImagen = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "SELECT rutaImagen from pokemon where nombre = '"+nombrePokemon+"'";
 			ResultSet rs = st.executeQuery(query);
@@ -177,9 +177,9 @@ public class BuscadorPokemon {
 		String id = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "SELECT id from pokemon where rutaImagen = '"+rutaImagen+"'";
 			ResultSet rs = st.executeQuery(query);

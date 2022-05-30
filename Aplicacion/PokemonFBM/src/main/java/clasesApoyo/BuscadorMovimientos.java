@@ -6,10 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BuscadorMovimientos {
+	
 	public static String mostrarTabla(String idUsuario, String idPokemon) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/pokedexdb";
-		Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+		Class.forName(datosMysql.driver);
+		String url = datosMysql.driverUrl;
+		Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 		Statement st = con.createStatement();
 		
 		String query = "";
@@ -48,9 +49,9 @@ public class BuscadorMovimientos {
 		String nombreMovimiento = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "UPDATE equipo SET "+numeroMovimiento+" = "+idMovimiento+" where idUsuario = "+idUsuario+" and idPokemon = "+idPokemon+"";
 			st.executeUpdate(query);
@@ -67,9 +68,9 @@ public class BuscadorMovimientos {
 	public static void quitarMovimiento(String idUsuario, String idPokemon, String numeroMovimiento) {
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "UPDATE equipo SET "+numeroMovimiento+" = null where idUsuario = "+idUsuario+" and idPokemon = "+idPokemon+"";
 			st.executeUpdate(query);
@@ -84,9 +85,9 @@ public class BuscadorMovimientos {
 		int contador;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			
 		for(contador = 1; contador < 5; contador++){
@@ -120,9 +121,9 @@ public class BuscadorMovimientos {
 		String resultado = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = "SELECT nombre from movimiento where id = "+idMovimiento+"";
 			ResultSet rs = st.executeQuery(query);

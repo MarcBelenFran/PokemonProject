@@ -1,4 +1,4 @@
-function actualizarDatos(){
+function actualizarDatosPartida(){
     let http = new XMLHttpRequest();
  
     http.onreadystatechange = function(){
@@ -7,8 +7,8 @@ function actualizarDatos(){
         }
     }
 
-    http.open("GET", "http://localhost:8080/PokemonFBM/actualizarDatos", true);
-    http.send();
+    http.open("GET", "http://localhost:8080/PokemonFBM/tablaPartidas", true);
+    http.send("nombre"+localStorage.getItem("nombre"));
 }
 
 function crearPartida(){
