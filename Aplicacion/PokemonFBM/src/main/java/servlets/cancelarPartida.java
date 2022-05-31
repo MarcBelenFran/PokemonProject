@@ -1,19 +1,19 @@
 package servlets;
-import java.io.IOException;
 
-import clasesApoyo.BuscadorPartidas;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
 
+import clasesApoyo.BuscadorPartidas;
 /**
- * Servlet implementation class actualizarTablaPartida
+ * Servlet implementation class cancelarPartida
  */
-@WebServlet("/actualizarTablaPartidas")
-public class actualizarTablaPartidas extends HttpServlet {
+@WebServlet("/cancelarPartida")
+public class cancelarPartida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -28,16 +28,15 @@ public class actualizarTablaPartidas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tablaPartidas = "";
+		
 		try {
-			tablaPartidas = BuscadorPartidas.mostrarTablaPartidas(request.getParameter("idUsuario"));
+			BuscadorPartidas.eliminarPartida(request.getParameter("idUsuario"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.getWriter().append(tablaPartidas);
 	}
 
 }

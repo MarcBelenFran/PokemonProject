@@ -1,4 +1,4 @@
-function actualizarDatosPartida(){
+function actualizarCombatesDisponibles(){
     let http = new XMLHttpRequest();
  
     http.onreadystatechange = function(){
@@ -7,21 +7,43 @@ function actualizarDatosPartida(){
         }
     }
 
-    http.open("GET", "http://localhost:8080/PokemonFBM/tablaPartidas", true);
-    http.send("nombre"+localStorage.getItem("nombre"));
+    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarTablaPartidas", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
 }
 
 function crearPartida(){
-    let popup = document.getElementById('popup');
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            let popup = document.getElementById('popup');
+            popup.style.display = "flex";
+        }
+    }
 
-    popup.style.display = "flex";
+    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
+    
     
 }
 
 function cancelarCombate(){
-    let popup = document.getElementById('popup');
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            let popup = document.getElementById('popup');
 
-    popup.style.display = "none";
+            popup.style.display = "none";
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/cancelarPartida", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
+    
 }
 
 function eliminarPartida(){

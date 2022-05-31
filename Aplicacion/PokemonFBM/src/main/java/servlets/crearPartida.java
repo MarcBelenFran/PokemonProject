@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import clasesApoyo.BuscadorPartidas;
+
 /**
  * Servlet implementation class crearPartida
  */
@@ -27,11 +29,15 @@ public class crearPartida extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String rutasImagenes = "";
 		
+		try {
+			BuscadorPartidas.crearPartida(request.getParameter("idUsuario"));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
+
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.getWriter().append(rutasImagenes);
 	}
 
 }

@@ -3,6 +3,9 @@ window.onload = function(){
         actualizarDatos();
         if(document.getElementById("botonesVisitante") == null){
             imagenesEquipoPokemon();   
+        }
+        if(document.getElementById("tablaPartidas") != null){
+            actualizarTablaPartidas();
         }     
         document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("usuario");
         document.getElementById("botonSesion").style.display = 'block';
@@ -43,6 +46,20 @@ function imagenesEquipoPokemon(){
     }
 
     http.open("POST", "http://localhost:8080/PokemonFBM/imagenesPokemon", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
+}
+
+function actualizarTablaPartidas(){
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            document.getElementById("tablaPartidas").innerHTML = http.responseText
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarTablaPartidas", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idUsuario="+localStorage.getItem("id"));
 }
