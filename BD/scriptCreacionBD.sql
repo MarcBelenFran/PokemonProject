@@ -94,6 +94,7 @@ CREATE TABLE turnos(
     idUsuario int,
     idMovimiento int,
     idPokemon int,
+    cambioPokemon bool,
     FOREIGN KEY(idCombate) REFERENCES combate(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
