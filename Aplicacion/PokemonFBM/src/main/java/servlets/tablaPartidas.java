@@ -12,9 +12,9 @@ import java.io.IOException;
 import clasesApoyo.BuscadorPartidas;
 
 /**
- * Servlet implementation class tablaPokemon
+ * Servlet implementation class tablaPartidas
  */
-@WebServlet("/tablaPokemon")
+@WebServlet("/tablaPartidas")
 public class tablaPartidas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

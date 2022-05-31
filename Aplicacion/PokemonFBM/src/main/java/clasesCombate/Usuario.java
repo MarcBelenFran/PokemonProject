@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.regex.*;
 
+import clasesApoyo.datosMysql;
+
 public class Usuario {
 	private String nombre;
 	private String correo;
@@ -36,11 +38,11 @@ public class Usuario {
 		boolean resultado = true; 
 		try {
 			System.out.println("0");
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(datosMysql.driver);
 			System.out.println("1");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
+			String url = datosMysql.driverUrl;
 			System.out.println("2");
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			System.out.println("3");
 			Statement st = con.createStatement();
 			System.out.println("4");
@@ -59,9 +61,9 @@ public class Usuario {
 		String resultado = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = ("select id from usuario where nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
 			ResultSet rs = st.executeQuery(query);
@@ -102,9 +104,9 @@ public class Usuario {
 		String resultado = "../Imagenes/EntrenadorIncognito.png";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/pokedexdb";
-			Connection con = DriverManager.getConnection(url, "root", "123456Fran");
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
 			String query = ("select rutaImagen, numVictorias from usuario, avatarUsuario where usuario.avatar_ID = avatarUsuario.id and nombreUsuario ='"+this.getNombre()+"' and contrasena='"+this.getContrasena()+"'");
 			ResultSet rs = st.executeQuery(query);

@@ -10,9 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class actualizarDatos
+ * Servlet implementation class actualizarDatosPartida
  */
-@WebServlet("/actualizarDatos")
+@WebServlet("/actualizarDatosPartida")
 public class actualizarDatosPartida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
