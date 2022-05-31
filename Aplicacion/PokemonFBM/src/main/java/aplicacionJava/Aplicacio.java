@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import clasesApoyo.datosMysql;
 
@@ -81,8 +82,33 @@ public class Aplicacio {
 	}
 
 	public static void main(String[] args) {
+		String respuesta = "";
+		Scanner teclat = new Scanner(System.in);
+		boolean a = false;
+		while(!a) {
+			try {
+				System.out.println("Selecciona una de las siguientes opciones \n 1.- Ver todos los usuarios \n 2.- Ver todos los Pokemons \n 3.- Ver el registro de Combates \n 3.- Salir \n (los unicos valores disponibles son 1, 2, 3 o 4)");
+				respuesta = teclat.nextLine();
+				switch(respuesta) {
+				case "1":
+					verUsuarios();
+				case "2":
+					verPokemons();
+				case "3":
+					verCombates();
+				case "4":
+					a=true;
+				}
+			}catch (Exception e) {
+				System.out.println("Has introducido una opcion incorrecta");
+			}
+			
+			switch(respuesta) {
+			case "1":
+			}
+		}
 		
-
+		teclat.close();
 	}
 
 }
