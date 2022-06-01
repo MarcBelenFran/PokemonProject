@@ -18,6 +18,12 @@ public class Pokemon {
 		this.setMovimiento(movimiento);
 		this.vivo = vivo;
 	}
+	
+	public void crearPokemon(int[] pokemons, Usuario usr, int jugador, boolean cambio, int idCombate) {
+		if(jugador == 1) {
+			
+		}
+	}
 
 	public String getNombre() {return nombre;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
