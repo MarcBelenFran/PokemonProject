@@ -91,14 +91,14 @@ CREATE TABLE combate(
 CREATE TABLE turnos(
 	idCombate int,
     numeroTurno int,
-    idUsuario int,
+    nombreUsuario varchar(10),
     idMovimiento int,
     idPokemon int,
     cambioPokemon bool,
     FOREIGN KEY(idCombate) REFERENCES combate(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+    FOREIGN KEY(nombreUsuario) REFERENCES usuario(nombreUsuario)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY(idMovimiento) REFERENCES movimiento(id)

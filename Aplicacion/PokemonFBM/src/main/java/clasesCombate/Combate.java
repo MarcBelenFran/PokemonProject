@@ -6,11 +6,12 @@ import java.io.IOException;
 
 public class Combate {
 	private static int id;
-	private Usuario usr1, usr2;
-	private Pokemon pk1, pk2;
-	private Movimiento mv1, mv2;
+	private static Usuario usr1;
+	private static Usuario usr2;
+	private static Pokemon pk1, pk2;
+	private static Movimiento mv1, mv2;
 	public boolean running = true;
-	public Usuario ganador;
+	public static Usuario ganador;
 	
 	File chat = new File(id+"log.txt");
 	
@@ -158,14 +159,18 @@ public class Combate {
 		if(usr1.isCambioPokemon() == true && usr2.isCambioPokemon() == true) {
 			cambioPk(usr1, pk1);
 			cambioPk(usr2, pk2);
+			usr1.setCambioPokemon(false);
+			usr2.setCambioPokemon(false);
 			return chat;
 		}else if(usr1.isCambioPokemon()==true && usr2.isCambioPokemon()==false) {
 			cambioPk(usr1, pk1);
 			ataqueIndividual(pk1, pk2, mv2);
+			usr1.setCambioPokemon(false);
 			return chat;
 		}else if(usr1.isCambioPokemon()==false && usr2.isCambioPokemon()==true) {
 			cambioPk(usr2, pk2);
 			ataqueIndividual(pk2, pk1, mv1);
+			usr2.setCambioPokemon(false);
 			return chat;
 		}else {
 			if(pk1.getStats()[4]>= pk2.getStats()[4]) {
@@ -193,8 +198,79 @@ public class Combate {
 			e.printStackTrace();
 		}
 	}
+
 	
+	//GETTERS Y SETTERS
 	public static int getId() {
 		return id;
 	}
+
+	public static void setId(int id) {
+		Combate.id = id;
+	}
+
+	public static Usuario getUsr1() {
+		return usr1;
+	}
+
+	public static void setUsr1(Usuario usr1) {
+		Combate.usr1 = usr1;
+	}
+
+	public static Usuario getUsr2() {
+		return usr2;
+	}
+
+	public static void setUsr2(Usuario usr2) {
+		Combate.usr2 = usr2;
+	}
+
+	public static Pokemon getPk1() {
+		return pk1;
+	}
+
+	public static void setPk1(Pokemon pk1) {
+		Combate.pk1 = pk1;
+	}
+
+	public static Pokemon getPk2() {
+		return pk2;
+	}
+
+	public static void setPk2(Pokemon pk2) {
+		Combate.pk2 = pk2;
+	}
+
+	public static Movimiento getMv1() {
+		return mv1;
+	}
+
+	public static void setMv1(Movimiento mv1) {
+		Combate.mv1 = mv1;
+	}
+
+	public static Movimiento getMv2() {
+		return mv2;
+	}
+
+	public static void setMv2(Movimiento mv2) {
+		Combate.mv2 = mv2;
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+
+	public static Usuario getGanador() {
+		return ganador;
+	}
+
+	public static void setGanador(Usuario ganador) {
+		Combate.ganador = ganador;
+	}
+	
 }
