@@ -1,12 +1,12 @@
 package clasesCombate;
 
 public class Movimiento {
-	private static int id = 0;
+	private int id = 0;
 	private int ataque;
 	private int probCritico;
 	
-	public Movimiento(String tipo, int ataque, int probCritico) {
-		Movimiento.id++;
+	public Movimiento(int id, int ataque, int probCritico) {
+		this.setId(id);
 		this.setAtaque(ataque);
 		this.setProbCritico(probCritico);
 	}
@@ -18,5 +18,5 @@ public class Movimiento {
 	public void setProbCritico(int probCritico) {this.probCritico = probCritico;}
 
 	public int getId() {return id;}
-	public void setId(int id) {Movimiento.id = id;}
+	public void setId(int id) {this.id = id;}
 }

@@ -9,6 +9,7 @@ import java.util.regex.*;
 import clasesApoyo.datosMysql;
 
 public class Usuario {
+	private int id;
 	private String nombre;
 	private String correo;
 	private String contrasena;
@@ -16,20 +17,26 @@ public class Usuario {
 	private ArrayList<Pokemon> equipo;
 	
 	// Constructor
+	public Usuario() {};
 	public Usuario(String nombre, String contrasena) {
-		this(nombre, null, contrasena, null);
+		this(0, nombre, null, contrasena, true, null);
 	}
 	
 	public Usuario(String nombre, String correo, String contrasena) {
-		this(nombre, correo, contrasena, null);
+		this(0, nombre, correo, contrasena, true, null);
+	}
+	
+	public Usuario(int id, String nombre, boolean cambioPokemon, ArrayList<Pokemon> equipo) {
+		this(id, nombre, null, null, cambioPokemon, equipo);
 	}
 
-	public Usuario(String nombre, String correo, String contrasena, ArrayList<Pokemon> equipo) {
+	public Usuario(int id, String nombre, String correo, String contrasena,boolean cambioPokemon, ArrayList<Pokemon> equipo) {
+		this.setId(id);
 		this.setNombre(nombre);
 		this.setCorreo(correo);
 		this.setContrasena(contrasena);
 		this.equipo = new ArrayList<Pokemon>();
-		this.nombre = nombre;
+		this.setCambioPokemon(cambioPokemon);
 		this.equipo = equipo;
 	}
 	
@@ -187,6 +194,12 @@ public class Usuario {
 
 	public void setCambioPokemon(boolean cambioPokemon) {
 		this.cambioPokemon = cambioPokemon;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
