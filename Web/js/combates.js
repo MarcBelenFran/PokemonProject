@@ -46,16 +46,18 @@ function cancelarCombate(){
     
 }
 
-function eliminarPartida(){
-        let http = new XMLHttpRequest();
- 
+function unirseCombate(idCombate){
+    let http = new XMLHttpRequest();
+
     http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
         
+        }
     }
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarDatos", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/unirsePartida", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send("nombre="+sessionStorage.getItem("usuario"));
+    http.send("idUsuario="+localStorage.getItem("id")+"&&idCombate="+idCombate);
 }
 
 const listaPokemon = document.querySelectorAll('.pokemonEquipo');
@@ -90,3 +92,5 @@ function obtenerImagenSeleccionado(){
 
     return resultado
 }
+
+

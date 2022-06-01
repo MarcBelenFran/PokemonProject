@@ -33,4 +33,32 @@ public class BuscadorUsuario {
 		
 		return nombreUsuario;
 	}
+	
+	/**
+	 * Metodo validarSesion. Validar que todos los datos que se guardan en el localSotorage concuerdan con un usuario en la base de datos
+	 * @param idUsuario
+	 * @param nombre
+	 * @param contrasena
+	 * @return resultado de la validacion (error o correcto).
+	 */
+	public static String validarSesion(String idUsuario, String nombre, String contrasena){
+		String resultado = "error";
+		
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "SELECT * from usuario where id = '"+idUsuario+"' and nombreUsuario = '"+nombre+"' and contrasena = '"+contrasena+"'";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				resultado = "correcto";
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return resultado;
+	}
 }

@@ -1,24 +1,20 @@
 package servlets;
+import java.io.IOException;
 
-
+import clasesApoyo.BuscadorUsuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
-import clasesApoyo.BuscadorPokemon;
-
-
 /**
- * Servlet implementation class agregarPokemon
+ * Servlet implementation class validarSesion
  */
-@WebServlet("/agregarPokemon")
-public class agregarPokemon extends HttpServlet {
+@WebServlet("/validarSesion")
+public class validarSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -34,7 +30,7 @@ public class agregarPokemon extends HttpServlet {
 		String resultado = "";
 		
 		try {
-			resultado = BuscadorPokemon.agregarPokemon(request.getParameter("idUsuario"), request.getParameter("nombrePokemon"));
+			resultado = BuscadorUsuario.validarSesion(request.getParameter("idUsuario"),request.getParameter("nombre"),request.getParameter("contrasena"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

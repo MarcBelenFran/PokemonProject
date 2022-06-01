@@ -23,7 +23,7 @@ public class BuscadorPartidas {
 		
 		int contador = 0;
 		String query = "";
-		query = "SELECT jugador1 FROM combate WHERE jugador1 != "+idUsuario+" and jugador2 is null";
+		query = "SELECT jugador1, id FROM combate WHERE jugador1 != "+idUsuario+" and jugador2 is null";
 
 		
 		ResultSet rs = st.executeQuery(query);
@@ -40,7 +40,7 @@ public class BuscadorPartidas {
 						+"<tr>"
 						+ "<td>"+contador+"</td>"
 						+ "<td>"+BuscadorUsuario.nombreID(rs.getString("jugador1"))+"</td>"
-						+ "<td><button onclick=\"unirseCombate()\">Unirse</button></td>"
+						+ "<td><button onclick=\"unirseCombate('"+rs.getString("id")+"')\" class=\"boton\">Unirse</button></td>"
 						+"<tr>";						
 		}
 		
@@ -68,6 +68,23 @@ public class BuscadorPartidas {
 		}
 		
 	}
+	
+	public static void unirsePartida(String idUsuario, String idCombate) {
+		System.out.println(idUsuario);
+		System.out.println(idCombate);
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "UPDATE combate SET jugador2 = "+idUsuario+" WHERE id = "+idCombate+" order by id desc limit 1";
+			st.executeUpdate(query);
+
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	
 	/**
 	 * Metodo eliminarPartida. Elimina la partida la cual el jugador1 ha hecho la peticion.

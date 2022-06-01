@@ -22,6 +22,7 @@ main{
 #tablaPartidas td, th{
     border: solid 2px black;
     text-align: center;
+    padding: 5px;
 }
 
 #tablaPartidas th{
@@ -33,9 +34,9 @@ main{
     margin-top: 20px;
 }
 
-#nuevaPartida{
-    padding:  10px;
-    font-size: 1.2em;
+.boton{
+    padding: 5px;
+    font-size: 1.1em;
 }
 
 #popup{

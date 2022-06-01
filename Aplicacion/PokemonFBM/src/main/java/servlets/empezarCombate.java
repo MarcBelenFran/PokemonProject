@@ -1,5 +1,5 @@
 package servlets;
-
+import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,18 +7,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
-import clasesApoyo.BuscadorPokemon;
-
-
 /**
- * Servlet implementation class agregarPokemon
+ * Servlet implementation class empezarCombate
  */
-@WebServlet("/agregarPokemon")
-public class agregarPokemon extends HttpServlet {
+@WebServlet("/empezarCombate")
+public class empezarCombate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -31,16 +26,8 @@ public class agregarPokemon extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultado = "";
-		
-		try {
-			resultado = BuscadorPokemon.agregarPokemon(request.getParameter("idUsuario"), request.getParameter("nombrePokemon"));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.getWriter().append(resultado);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
