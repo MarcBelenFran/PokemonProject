@@ -19,6 +19,9 @@ function crearPartida(){
         if(http.readyState == 4 && http.status == 200){
             let popup = document.getElementById('popup');
             popup.style.display = "flex";
+            while(comprobarJugador2 = ""){
+
+            }
         }
     }
 
@@ -27,6 +30,20 @@ function crearPartida(){
     http.send("idUsuario="+localStorage.getItem("id"));
     
     
+}
+
+function comprobarJugador2(){
+    let http = new XMLHttpRequest();
+ 
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            return http.responseText;
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
 }
 
 function cancelarCombate(){
@@ -51,7 +68,10 @@ function unirseCombate(idCombate){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-        
+            setTimeout(function(){         
+                console.log("hola");
+                document.getElementById("popupCombates").style.display = "flex";
+            }, 2000);
         }
     }
 
