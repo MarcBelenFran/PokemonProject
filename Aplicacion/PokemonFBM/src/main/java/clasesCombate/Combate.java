@@ -5,13 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Combate {
-	private static int id;
-	private static Usuario usr1;
-	private static Usuario usr2;
-	private static Pokemon pk1, pk2;
-	private static Movimiento mv1, mv2;
+	private int id;
+	private Usuario usr1;
+	private Usuario usr2;
+	private Pokemon pk1, pk2;
+	private Movimiento mv1, mv2;
 	public boolean running = true;
-	public static Usuario ganador;
+	public Usuario ganador;
 	
 	File chat = new File(id+"log.txt");
 	
@@ -199,78 +199,80 @@ public class Combate {
 		}
 	}
 
-	
-	//GETTERS Y SETTERS
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
 
-	public static void setId(int id) {
-		Combate.id = id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public static Usuario getUsr1() {
+	public Usuario getUsr1() {
 		return usr1;
 	}
 
-	public static void setUsr1(Usuario usr1) {
-		Combate.usr1 = usr1;
+	public void setUsr1(Usuario usr1) {
+		this.usr1 = usr1;
 	}
 
-	public static Usuario getUsr2() {
+	public Usuario getUsr2() {
 		return usr2;
 	}
 
-	public static void setUsr2(Usuario usr2) {
-		Combate.usr2 = usr2;
+	public void setUsr2(Usuario usr2) {
+		this.usr2 = usr2;
 	}
 
-	public static Pokemon getPk1() {
+	public Pokemon getPk1() {
 		return pk1;
 	}
 
-	public static void setPk1(Pokemon pk1) {
-		Combate.pk1 = pk1;
+	public void setPk1(Pokemon pk1) {
+		this.pk1 = pk1;
 	}
 
-	public static Pokemon getPk2() {
+	public Pokemon getPk2() {
 		return pk2;
 	}
 
-	public static void setPk2(Pokemon pk2) {
-		Combate.pk2 = pk2;
+	public void setPk2(Pokemon pk2) {
+		this.pk2 = pk2;
 	}
 
-	public static Movimiento getMv1() {
+	public Movimiento getMv1() {
 		return mv1;
 	}
 
-	public static void setMv1(Movimiento mv1) {
-		Combate.mv1 = mv1;
+	public void setMv1(Movimiento mv1) {
+		this.mv1 = mv1;
 	}
 
-	public static Movimiento getMv2() {
+	public Movimiento getMv2() {
 		return mv2;
 	}
 
-	public static void setMv2(Movimiento mv2) {
-		Combate.mv2 = mv2;
+	public void setMv2(Movimiento mv2) {
+		this.mv2 = mv2;
 	}
 
-	public boolean isRunning() {
-		return running;
-	}
-
-	public void setRunning(boolean running) {
-		this.running = running;
-	}
-
-	public static Usuario getGanador() {
+	public Usuario getGanador() {
 		return ganador;
 	}
 
-	public static void setGanador(Usuario ganador) {
-		Combate.ganador = ganador;
+	public void setGanador(Usuario ganador) {
+		this.ganador = ganador;
 	}
+
+	public File getChat() {
+		return chat;
+	}
+
+	public void setChat(File chat) {
+		this.chat = chat;
+	}
+
+	
+	//GETTERS Y SETTERS
+
 	
 }

@@ -17,7 +17,7 @@ public class BuscadorCombates {
 		// 3.- AL FINAL DE LA SELECT SE TIENE QUE DEVOLVER EL ARRAY EN FORMATO JSON AL JS
 	
 	public static void turnos(int idCombate) {
-		
+		Combate combate = new Combate();
 		try {
 			Class.forName(datosMysql.driver);
 			String url = datosMysql.driverUrl;
@@ -30,9 +30,9 @@ public class BuscadorCombates {
 			
 			while(rs.next()) {
 				for (int i=0; i<2; i++) {
-					if (rs.getString("nombreUsuario").equals(Combate.getUsr1().getNombre())) {
+					if (rs.getString("nombreUsuario").equals(combate.getUsr1().getNombre())) {
 						
-					}else if(rs.getString("nombreUsuario").equals(Combate.getUsr2().getNombre())) {
+					}else if(rs.getString("nombreUsuario").equals(combate.getUsr2().getNombre())) {
 						
 					}
 				}

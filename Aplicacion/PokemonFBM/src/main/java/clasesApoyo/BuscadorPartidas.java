@@ -70,8 +70,6 @@ public class BuscadorPartidas {
 	}
 	
 	public static void unirsePartida(String idUsuario, String idCombate) {
-		System.out.println(idUsuario);
-		System.out.println(idCombate);
 		try {
 			Class.forName(datosMysql.driver);
 			String url = datosMysql.driverUrl;

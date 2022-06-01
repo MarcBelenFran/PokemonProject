@@ -2,18 +2,18 @@ package clasesCombate;
 
 public class Pokemon {
 	
+	private int id;
 	private String nombre;
-	private String tipo;
 	// HP, DEFENSA, DMG, VELOCIDAD
 	private int[] stats;
 	private Movimiento[] movimiento;
 	private static boolean cambio = true;
 	private boolean vivo = true;
 
-	public Pokemon(String nombre, String tipo, int[] stats, Movimiento[] movimiento, boolean vivo) {
+	public Pokemon(int id, String nombre, int[] stats, Movimiento[] movimiento, boolean vivo) {
+		this.setId(id);
 		this.stats = new int[4];
 		this.setNombre(nombre);
-		this.setTipo(tipo);
 		this.setStats(stats);
 		this.setMovimiento(movimiento);
 		this.vivo = vivo;
@@ -25,9 +25,6 @@ public class Pokemon {
 	public void setStats(int[] stats) {this.stats = stats;}	
 	public int[] getStats() {return stats;}
 	
-	public String getTipo() {return tipo;}
-	public void setTipo(String tipo) {this.tipo = tipo;}
-	
 	public Movimiento[] getMovimiento() {return movimiento;}
 	public void setMovimiento(Movimiento[] movimiento) {this.movimiento = movimiento;}
 	
@@ -37,6 +34,9 @@ public class Pokemon {
 	public boolean isVivo() {return vivo;}
 	public void setVivo(boolean vivo) {this.vivo = vivo;}
 	
+	public int getId() {return id;}
+	public void setId(int id) {this.id = id;}
+	
 	public void takeDmg(int damage) {
 		stats[0] -= damage; 
 		
@@ -45,4 +45,6 @@ public class Pokemon {
 			this.setVivo(false);
 		}
 	}
+
+	
 }
