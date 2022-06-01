@@ -23,33 +23,71 @@ public class BuscadorCombates {
 		// (SE IRIA ACTUALIZANDO LA ARRAY DEL EQUIPO POKEMON)
 		// 3.- AL FINAL DE LA SELECT SE TIENE QUE DEVOLVER EL ARRAY EN FORMATO JSON AL JS
 	
-	public static void combate(int idCombate, int idUsr1, int[] equipo1, boolean cambio1, int idUsr2, int[]equipo2, boolean cambio2) {
+	public static void combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
 		//CREAM COMBAT I USUARIS
 		Combate combate = new Combate();
 		combate.setId(idCombate);
-		combate.setUsr1(crearUsuario(idUsr1, equipo1, cambio1));
-		combate.setUsr2(crearUsuario(idUsr2, equipo2, cambio2));
+		combate.setUsr1(crearUsuario(idUsr1, equipo1, cambio1, nombreUsr1));
+		combate.setUsr2(crearUsuario(idUsr2, equipo2, cambio2, nombreUsr2));
 		
+		boolean a = true;
+		int contador = 0;
+		while(!a) {
+			try {
+				Class.forName(datosMysql.driver);
+				String url = datosMysql.driverUrl;
+				Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+				Statement st = con.prepareStatement("Select t1.idCombate, t1.numeroTurno, t1.idUsuario, t1.idMovimiento, t1.idPokemon, t1.cambioPokemon from turnos t1, turnos t2\r\n"
+						+ "where t1.numeroTurno = t2.numeroTurno and t1.idCombate = t2.idCombate and t1.nombreUsuario != t2.nombreUsuario and t1.idCombate='"+idCombate+"' limit 1, '"+contador+"'");
+				String query = "";
+				st.executeQuery(query);
+				ResultSet rs = st.executeQuery(query);
+				
+				while(rs.next()) {
+						if (rs.getString("nombreUsuario").equals(combate.getUsr1().getNombre())) {
+							combate.setPk1(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr1()));
+							combate.setMv1(seleccionarMovimiento(combate.getPk1(), rs.getInt("idMovimiento")));
+						}else if(rs.getString("nombreUsuario").equals(combate.getUsr2().getNombre())) {
+							combate.setPk2(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr2()));
+							combate.setMv2(seleccionarMovimiento(combate.getPk2(), rs.getInt("idMovimiento")));
+						}
+						
+						contador++;
+						if (contador%2==0) {
+							combate.usaMovimiento();
+						}
+				}
+				
+					
+				
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		
 	}
 	
-	public static Usuario crearUsuario(int id, int[]equipo, boolean cambioPokemon) {
-		try {
-			Class.forName(datosMysql.driver);
-			String url = datosMysql.driverUrl;
-			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
-			Statement st = con.createStatement();
-			String query = "SELECT id, nombreUsuario FROM equipo WHERE id= '"+id+"'";
-			ResultSet rs = st.executeQuery(query);
-			
-			while(rs.next()) {	
-				Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("nombreUsuario"), null, null, cambioPokemon, crearPokemons(equipo, id));
-				return usuario;
-				}			
-	}catch(Exception e) {
-		System.out.println(e.getMessage());
+	public static Movimiento seleccionarMovimiento(Pokemon pokemon, int idMovimiento) {
+		for(int i=0; i<pokemon.getMovimiento().length; i++) {
+			if(pokemon.getMovimiento()[i].getId()==idMovimiento) {
+				return pokemon.getMovimiento()[i];
+			}
+		}
+		return null;
 	}
-	return null;
+	
+	public static Pokemon seleccionarPokemon(int idPokemon, Usuario usuario) {
+		for(int i=0; i<usuario.getEquipo().size(); i++) {
+			if(usuario.getEquipo().get(i).getId()==idPokemon) {
+				return usuario.getEquipo().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static Usuario crearUsuario(int id, int[]equipo, boolean cambioPokemon, String nombreUsuario) {
+				Usuario usuario = new Usuario(id, nombreUsuario, null, null, cambioPokemon, crearPokemons(equipo, id));
+				return usuario;
 	}
 	
 	public static ArrayList<Pokemon> crearPokemons(int[]equipo, int idUsuario) {
@@ -122,36 +160,5 @@ public class BuscadorCombates {
 			System.out.println(e.getMessage());
 		}
 		return null;
-	}
-	
-	
-	
-	
-	public static void turnos(int idCombate) {
-		Combate combate = new Combate();
-		try {
-			Class.forName(datosMysql.driver);
-			String url = datosMysql.driverUrl;
-			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
-			Statement st = con.prepareStatement("Select t1.idCombate, t1.numeroTurno, t1.nombreUsuario, t1.idMovimiento, t1.idPokemon, t1.cambioPokemon from turnos t1, turnos t2\r\n"
-					+ "where t1.numeroTurno = t2.numeroTurno and t1.idCombate = t2.idCombate and t1.nombreUsuario != t2.nombreUsuario and t1.idCombate='"+idCombate+"'");
-			String query = "";
-			st.executeQuery(query);
-			ResultSet rs = st.executeQuery(query);
-			
-			while(rs.next()) {
-				for (int i=0; i<2; i++) {
-					if (rs.getString("nombreUsuario").equals(combate.getUsr1().getNombre())) {
-						
-					}else if(rs.getString("nombreUsuario").equals(combate.getUsr2().getNombre())) {
-						
-					}
-				}
-			}
-				
-			
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
 	}
 }
