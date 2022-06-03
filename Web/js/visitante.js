@@ -1,6 +1,6 @@
 window.onload = function () {
     if (localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null) {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 }
 
@@ -37,7 +37,7 @@ function login() {
                 } else if(http.responseText == "validacion") {
                     document.getElementById("resultado").innerHTML = "ERROR: Buen intento crack";
                 }else if(http.responseText != ""){
-                    window.location.href = "home.html";
+                    window.location.href = "index.html";
                     localStorage.setItem("usuario", document.getElementById("nombre").value);
                     localStorage.setItem("contrasena", document.getElementById("contrasena").value);
                     localStorage.setItem("id", http.responseText);

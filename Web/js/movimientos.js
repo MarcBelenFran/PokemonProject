@@ -44,7 +44,7 @@ listaMovimientos.forEach(elements => elements.addEventListener("click", event =>
 
 
 function obtenerImagenSeleccionado(){
-    let resultado = "../";
+    let resultado = "./";
     let i = 0;
     let seleccionado = false;
 
@@ -62,7 +62,7 @@ function obtenerImagenSeleccionado(){
 }
 
 function obtenerNombreSeleccionado(rutaImagen){
-    let nombre = rutaImagen.replaceAll("../Imagenes/", "");
+    let nombre = rutaImagen.replaceAll("./Imagenes/", "");
     nombre = nombre.substring(0, nombre.indexOf("."));
     return nombre;
 }

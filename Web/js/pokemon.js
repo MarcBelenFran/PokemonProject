@@ -15,7 +15,7 @@ listaPokemon.forEach(elements => elements.addEventListener("click", event =>{
 }))
 
 function obtenerImagenSeleccionado(){
-    let resultado = "../";
+    let resultado = "./";
     let i = 0;
     let seleccionado = false;
 
@@ -55,7 +55,7 @@ function quitarPokemon(Pokemon){
 
     http.onreadystatechange = function(){
         if (http.readyState==4 && http.status==200){
-            document.getElementById("pokemonSeleccionado").firstChild.src = "../Imagenes/pokemonNoElegido.png";
+            document.getElementById("pokemonSeleccionado").firstChild.src = "./Imagenes/pokemonNoElegido.png";
             document.querySelector('table').remove();
         }
     }

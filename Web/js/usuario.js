@@ -1,9 +1,11 @@
 window.onload = function(){
-    if(localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null){
+    if(localStorage.getItem("usuario") != null && localStorage.getItem("id") != null && localStorage.getItem("contrasena") != null){ 
             validarSesion();
             actualizarDatos();
             if(document.getElementById("botonesVisitante") == null){
                 imagenesEquipoPokemon();   
+            }else{
+                document.getElementById("botonesVisitante").style.display = 'none';
             }
             if(document.getElementById("tablaPartidas") != null){
                 actualizarTablaPartidas();
@@ -11,7 +13,7 @@ window.onload = function(){
             document.getElementById("nombreUsuario").innerHTML = localStorage.getItem("usuario");
             document.getElementById("botonSesion").style.display = 'block';
     }else if(document.getElementById("botonesVisitante") == null){
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 }
 
@@ -22,9 +24,6 @@ function actualizarDatos(){
         if(http.readyState == 4 && http.status == 200){
             document.getElementById("avatarEntrenador").src = http.responseText.split(',')[0];
             document.getElementById("numVictorias").innerHTML = http.responseText.split(',')[1];
-            if(window.location.href.includes("home.html")){
-                document.getElementById("botonesVisitante").style.display = 'none';
-            }
         }
     }
 
@@ -69,7 +68,7 @@ function actualizarTablaPartidas(){
 
 function cerrarSesion(){
         localStorage.clear();
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 
 

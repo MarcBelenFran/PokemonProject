@@ -95,7 +95,7 @@ listaPokemon.forEach(elements => elements.addEventListener("click", event =>{
 }))
 
 function obtenerImagenSeleccionado(){
-    let resultado = "../";
+    let resultado = "./";
     let i = 0;
     let seleccionado = false;
 

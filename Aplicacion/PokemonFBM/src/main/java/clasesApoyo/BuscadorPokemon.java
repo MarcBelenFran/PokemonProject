@@ -16,13 +16,13 @@ public class BuscadorPokemon {
 		String query = "";
 		boolean eliminar = false;
 		
-		if(nombre.equals("") && rutaImagen.equals("../Imagenes/pokemonNoElegido.png")) {
+		if(nombre.equals("") && rutaImagen.equals("./Imagenes/pokemonNoElegido.png")) {
 			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p where p.id not in (select p.id from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"')";
 			
-		}else if (!(nombre.equals("")) && rutaImagen.equals("../Imagenes/pokemonNoElegido.png")){
+		}else if (!(nombre.equals("")) && rutaImagen.equals("./Imagenes/pokemonNoElegido.png")){
 			query = "SELECT nombre, vida, ataque, defensa, velocidad FROM pokemon p WHERE nombre like '"+nombre+"%' and p.id not in (select p.id from pokemon p, equipo e where p.id = e.idPokemon and e.idUsuario = '"+idUsuario+"')";
 			
-		} else if (nombre.equals("") && !(rutaImagen.equals("../Imagenes/pokemonNoElegido.png"))){
+		} else if (nombre.equals("") && !(rutaImagen.equals("./Imagenes/pokemonNoElegido.png"))){
 			query = "SELECT p.nombre, p.vida, p.ataque, p.defensa, p.velocidad FROM pokemon p, equipo e, usuario u where p.id=e.idPokemon and u.id = e.idUsuario and p.rutaImagen = '"+rutaImagen+"'";
 			eliminar = true;
 			
