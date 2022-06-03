@@ -23,7 +23,7 @@ public class BuscadorCombates {
 		// (SE IRIA ACTUALIZANDO LA ARRAY DEL EQUIPO POKEMON)
 		// 3.- AL FINAL DE LA SELECT SE TIENE QUE DEVOLVER EL ARRAY EN FORMATO JSON AL JS
 	
-	public String combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
+	public static String combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
 		//CREAM COMBAT I USUARIS
 		Combate combate = new Combate();
 		combate.setId(idCombate);
@@ -162,6 +162,23 @@ public class BuscadorCombates {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	public static boolean convertirBooleano(String string) {
+		if(string.equals("true")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static int[] convertirInt(String[] string) {
+		int[] numeros = new int[string.length];
+		for(int i = 0;i < string.length;i++)
+		{
+		   numeros[i] = Integer.parseInt(string[i]);
+		}
+		return numeros;
 	}
 
 }
