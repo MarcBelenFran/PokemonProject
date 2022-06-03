@@ -108,7 +108,7 @@ public class Usuario {
 	}
 	
 	public String  actualizarDatos() {
-		String resultado = "../Imagenes/EntrenadorIncognito.png";
+		String resultado = "./Imagenes/EntrenadorIncognito.png";
 		
 		try {
 			Class.forName(datosMysql.driver);
