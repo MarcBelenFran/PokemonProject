@@ -199,6 +199,8 @@ public class Combate {
 		}
 	}
 
+	//GETTERS Y SETTERS
+	
 	public int getId() {
 		return id;
 	}
@@ -271,8 +273,4 @@ public class Combate {
 		this.chat = chat;
 	}
 
-	
-	//GETTERS Y SETTERS
-
-	
 }

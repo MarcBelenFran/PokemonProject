@@ -1,5 +1,12 @@
 package clasesCombate;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import clasesApoyo.datosMysql;
+
 public class Pokemon {
 	
 	private int id;
@@ -54,8 +61,22 @@ public class Pokemon {
 		}
 	}
 
-	public String toJSON() {
-		return "{\"nombre\":\""+getNombre()+"\", \"vida\":\""+getStats()[0]+"\"}";
+	public String toJSON(String nombre) {
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "SELECT rutaImagen FROM pokemon WHERE nombre = '"+nombre+"'";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				return "{\"nombre\":\""+getNombre()+"\", \"vida\":\""+getStats()[0]+"\", \"imagen\":"+rs.getString("rutaImagen")+"\"}";
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "Ha fallado la conversión a JSON";
 	}
 
 	

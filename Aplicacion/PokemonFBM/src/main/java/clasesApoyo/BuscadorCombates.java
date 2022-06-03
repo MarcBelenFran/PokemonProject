@@ -59,16 +59,16 @@ public class BuscadorCombates {
 				
 				//DEVOLVEMOS EL NOMBRE Y LA VIDA DE LOS 12 POKEMON
 				for(int i=0; i<combate.getUsr1().getEquipo().size(); i++) {
-					json = json + combate.getUsr1().getEquipo().get(i).toJSON();
+					json = json + combate.getUsr1().getEquipo().get(i).toJSON(combate.getUsr1().getEquipo().get(i).getNombre());
 				}
 				for(int i=0; i<combate.getUsr2().getEquipo().size(); i++) {
-					json = json + combate.getUsr2().getEquipo().get(i).toJSON();
+					json = json + combate.getUsr2().getEquipo().get(i).toJSON(combate.getUsr2().getEquipo().get(i).getNombre());
 				}
 				
 				return json;
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
-				return(null);
+				return "Ha fallado el combate";
 			}
 		
 	}
