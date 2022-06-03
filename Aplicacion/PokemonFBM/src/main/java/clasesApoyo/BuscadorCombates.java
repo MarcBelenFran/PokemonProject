@@ -23,16 +23,15 @@ public class BuscadorCombates {
 		// (SE IRIA ACTUALIZANDO LA ARRAY DEL EQUIPO POKEMON)
 		// 3.- AL FINAL DE LA SELECT SE TIENE QUE DEVOLVER EL ARRAY EN FORMATO JSON AL JS
 	
-	public static void combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
+	public String combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
 		//CREAM COMBAT I USUARIS
 		Combate combate = new Combate();
 		combate.setId(idCombate);
 		combate.setUsr1(crearUsuario(idUsr1, equipo1, cambio1, nombreUsr1));
 		combate.setUsr2(crearUsuario(idUsr2, equipo2, cambio2, nombreUsr2));
 		
-		boolean a = true;
 		int contador = 0;
-		while(!a) {
+		String json = "";
 			try {
 				Class.forName(datosMysql.driver);
 				String url = datosMysql.driverUrl;
@@ -58,12 +57,19 @@ public class BuscadorCombates {
 						}
 				}
 				
-					
+				//DEVOLVEMOS EL NOMBRE Y LA VIDA DE LOS 12 POKEMON
+				for(int i=0; i<combate.getUsr1().getEquipo().size(); i++) {
+					json = json + combate.getUsr1().getEquipo().get(i).toJSON();
+				}
+				for(int i=0; i<combate.getUsr2().getEquipo().size(); i++) {
+					json = json + combate.getUsr2().getEquipo().get(i).toJSON();
+				}
 				
+				return json;
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
+				return(null);
 			}
-		}
 		
 	}
 	
@@ -115,7 +121,6 @@ public class BuscadorCombates {
 	return null;
 }
 	
-	
 	public static Movimiento[] movimientos(int idPokemon, int idUsuario) {
 		Movimiento[] aMovimientos = new Movimiento[4];
 		try {
@@ -140,9 +145,6 @@ public class BuscadorCombates {
 		return null;
 	}
 	
-	
-	
-	
 	public static Movimiento crearMovimiento(int movimientos) {
 		try {
 			Class.forName(datosMysql.driver);
@@ -161,4 +163,5 @@ public class BuscadorCombates {
 		}
 		return null;
 	}
+
 }

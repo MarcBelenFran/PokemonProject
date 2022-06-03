@@ -43,6 +43,8 @@ public class Pokemon {
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 	
+	
+	
 	public void takeDmg(int damage) {
 		stats[0] -= damage; 
 		
@@ -50,6 +52,10 @@ public class Pokemon {
 			stats[0]=0;
 			this.setVivo(false);
 		}
+	}
+
+	public String toJSON() {
+		return "{\"nombre\":\""+getNombre()+"\", \"vida\":\""+getStats()[0]+"\"}";
 	}
 
 	
