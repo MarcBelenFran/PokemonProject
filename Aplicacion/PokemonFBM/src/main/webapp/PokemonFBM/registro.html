@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet"  href="CSS/header.css"></link>
+    <link rel="stylesheet"  href="CSS/general.css"></link>
+    <link rel="stylesheet"  href="CSS/registroLogin.css"></link>
+    <title>Pokedex FBM</title>
+</head>
+
+
+<body> 
+    <header id="head-menu"> 
+        <div id="logoHeader">
+            <img src="./Imagenes/pokeboll.png" class="logoPokeball" alt="Logo de una pokeball"></img>
+            <h1 id="headerText">Pokédex FBM</h1>
+        </div>
+        <div id="logoEntrenador">
+            <div id="nombreUsuario"></div>
+            <div id="bordeEntrenador"><img src="./Imagenes/EntrenadorIncognito.png" id="avatarEntrenador"></div>
+        </div>
+    </header>
+    <nav id="menu">
+        <div id="botonNav">
+            <div id="centroBoton">
+
+            </div>
+        </div>
+        <ul id="ulNav" class="listaMenu">
+            <li><a href="index.html" class="linkNav">Home</a></li>
+            <li><a href="pokemon.html" class="linkNav">Pokémon</a></li>
+            <li><a href="movimientos.html" class="linkNav">Movimientos</a></li>
+            <li><a href="combates.html" class="linkNav">Combates</a></li>             
+        </ul>
+    </nav>
+    <main>
+        <h2>Registro</h2>
+        <form onsubmit="registrar();return false">
+            <div>
+            <label for="nombre">Nombre: </label> <br>
+            <input type="text" id="nombre" autocomplete="off"  onchange="this.setCustomValidity('')" required>
+            </div>
+
+            <div>
+            <label for="correo">Correo: </label> <br>
+            <input type="text" id="correo" autocomplete="off" onchange="this.setCustomValidity('')" required>
+            </div>
+
+            <div>
+            <label for="contrasena">Contraseña: </label> <br>
+            <input type="password" id="contrasena" onchange="this.setCustomValidity('')" required>
+            </div>
+            
+            <button type="submit">Registrar </button>
+
+            <a href="login.html">¿Ya tienes cuenta?</a>
+
+            <div id="resultado"></div>
+            <script src="js/visitante.js"></script>
+            <script src="js/responsive.js"></script>
+        </form>
+    </main>
+</div>
+</body>
+</html>

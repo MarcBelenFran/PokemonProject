@@ -1,0 +1,142 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#tablaMovimientos{
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#tablaMovimientos th{
+    background-color: rgb(153, 153, 153);
+    color: black;
+}
+
+#tablaMovimientos td,th{
+    border: solid 2px black;
+    padding: 10px;
+    text-align: center;
+}
+
+#tablaMovimientos td{
+    background-color: white;
+}
+
+#popup{
+    display: none;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuTabla{
+    width: 700px;
+    height: 700px;
+    background-color: #181B1D;
+    border: 5px #D61114 solid;
+    display: grid;
+    grid-template-columns: auto;
+    place-items: center;
+    border-radius: 15px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+#menuMovimientos{
+    width: 75%;
+    height: 350px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: 3px solid #181B1D;
+    overflow-x: auto;
+    padding: 15px;
+    display: none;
+    gap:20px;
+}
+
+
+#movimientoSeleccionado{
+    border: solid var(--color-rojo) 4px;
+}
+
+
+#infoPokemon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#nombrePokemon{
+    font-size: 2em;
+    font-weight: bolder;
+    color: black;
+}
+
+#pokemonMovimiento{
+    width: 150px;
+}
+
+.movimiento{
+    background-color: rgb(204, 204, 204);
+    border-radius: 10px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+#Movimientos{
+    background-color: rgb(35, 35, 80);
+    border-radius: 15px;
+    border: 3px solid black;
+    height: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+ }
+
+ .boton{
+    padding: 10px;
+    font-size: 1.5em;
+    min-width: 100px;
+    border: 2px solid black;
+    border-radius: 5px;
+ }
+
+ #salirMenu{
+    padding: 10px;
+    font-size: 2em;
+    min-width: 300px;
+    max-width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+ #botonesSeleccion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+ }

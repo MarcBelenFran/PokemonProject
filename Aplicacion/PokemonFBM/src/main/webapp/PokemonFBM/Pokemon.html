@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet"  href="CSS/header.css"></link>
+    <link rel="stylesheet"  href="CSS/general.css"></link>
+    <link rel="stylesheet"  href="CSS/pokemon.css"></link>
+    <link rel="stylesheet" href="CSS/estiloEquipo.css"></link>
+    <title>Pokedex FBM</title>
+</head>
+
+
+<body> 
+    <header id="head-menu"> 
+        <div id="logoHeader">
+            <img src="./Imagenes/pokeboll.png" class="logoPokeball" alt="Logo de una pokeball"></img>
+            <h1 id="headerText">Pokédex FBM</h1>
+        </div>
+        <div id="logoEntrenador">
+            <div id="datosUsuario">
+                <div id="nombreUsuario"></div>
+                <div id="numVictorias"></div>
+            </div>
+            <div id="bordeEntrenador"><img src="./Imagenes/EntrenadorIncognito.png" id="avatarEntrenador"></div>
+        </div>
+    </header>
+    <nav id="menu">
+        <div id="botonNav">
+            <div id="centroBoton">
+
+            </div>
+        </div>
+        <ul id="ulNav" class="listaMenu">
+            <li><a href="index.html" class="linkNav">Home</a></li>
+            <li><a href="#" class="linkNav" id="sitioActual">Pokémon</a></li>
+            <li><a href="movimientos.html" class="linkNav">Movimientos</a></li>
+            <li><a href="combates.html" class="linkNav">Combates</a></li>             
+        </ul>
+    </nav>
+    <main>
+        <section id="equipo">
+            <ul id="listaEquipo">
+                <li class="pokemonEquipo"  id="pokemonSeleccionado"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+                <li class="pokemonEquipo"><img src="./Imagenes/pokemonNoElegido.png" class="imagenPokemon"></li>
+            </ul>
+        </section>
+        <section id="menuPokemons">
+            <div id="filtrosBusqueda">
+                <button type="button" onclick="actualizarTabla()" id="botonBusqueda">Buscar</button>
+                <input type="text" id="inputNombre" placeholder="Nombre del pokemon">
+            </div>
+        </section>
+        <section id="infoPokemons">
+        </section>
+        <button id="botonSesion" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
+        <br>
+    </main>
+</div>
+<script src="js/usuario.js"></script>
+<script src="js/responsive.js"></script>
+<script src="js/pokemon.js"></script>
+</body>
+</html>
