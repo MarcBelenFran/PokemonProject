@@ -30,9 +30,9 @@ public class registrar extends HttpServlet {
 		Usuario u = new Usuario(request.getParameter("nombre"),request.getParameter("correo"),request.getParameter("contrasena"));
 		System.out.println(u);
 		if(u.registrarUsuario()) {
-			response.getWriter().append("Usuario Registrado correctamente");
+			response.getWriter().append("Usuario registrado correctamente");
 		}else {
-			response.getWriter().append("Error: Nombre de usuario ya registrado");
+			response.getWriter().append("Error al registrar el usuario");
 		}
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");

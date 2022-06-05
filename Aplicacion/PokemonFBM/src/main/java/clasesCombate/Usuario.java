@@ -42,7 +42,8 @@ public class Usuario {
 	
 	
 	public boolean registrarUsuario() {
-		boolean resultado = true; 
+		boolean resultado = true;
+		
 		try {
 			System.out.println("0");
 			Class.forName(datosMysql.driver);
@@ -58,6 +59,7 @@ public class Usuario {
 			st.executeUpdate(query);
 			System.out.println("6");
 		} catch (Exception e) {
+			System.out.println(e);
 			resultado = false;
 		}
 		
