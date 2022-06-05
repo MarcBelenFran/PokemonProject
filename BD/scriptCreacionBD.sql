@@ -207,26 +207,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-USE `pokedexdb`;
-
-DELIMITER $$
-USE `pokedexdb`$$
-CREATE
-DEFINER=`root`@`%`
-TRIGGER `pokedexdb`.`revisarUsuarios`
-BEFORE INSERT ON `pokedexdb`.`usuario`
-FOR EACH ROW
-BEGIN
-	DECLARE contador int;
-    set contador = (select COUNT(nombreUsuario) from usuario where lower(nombreUsuario)=lower(new.nombreUsuario));
-	IF(contador > 0) then
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nombre de usuario repetido';
-	END IF;
-END$$
-
-
-DELIMITER ;
-
 INSERT INTO avatarUsuario (rutaImagen) VALUES ("./Imagenes/EntrenadorBaseChico.png");
 INSERT INTO avatarUsuario (rutaImagen) VALUES ("./Imagenes/EntrenadorBaseChica.png");
 
@@ -262,6 +242,28 @@ INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Gigadrenado", 75
 INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Lluevehojas", 140, 90);
 INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Portazo", 80, 75);
 INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Hoja Aguda", 90, 100);
+
+USE `pokedexdb`;
+
+DELIMITER $$
+USE `pokedexdb`$$
+CREATE
+DEFINER=`root`@`%`
+TRIGGER `pokedexdb`.`revisarUsuarios`
+BEFORE INSERT ON `pokedexdb`.`usuario`
+FOR EACH ROW
+BEGIN
+	DECLARE contador int;
+    set contador = (select COUNT(nombreUsuario) from usuario where lower(nombreUsuario)=lower(new.nombreUsuario));
+	IF(contador > 0) then
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nombre de usuario repetido';
+	END IF;
+END$$
+
+
+DELIMITER ;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
