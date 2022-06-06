@@ -13,7 +13,7 @@ En vista del crecimiento que ha estado recibiendo la famosa marca Nintendo, deci
 
 Una aplicación de Pokémon, con una página web formada por un inicio de sesión sencillo con usuario y contraseña, que se dividirá en dos tipos de usuarios, los usuarios comunes y los usuarios Prémium.
 
-Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Ob- jetos y Combate, este último apartado, será reservado para usuarios prémium, también existirá un menú de usuario donde se podrá ver el historial de combates del propio usuario y los usuarios con más victorias en combates.
+Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Combate, este último apartado, será reservado para usuarios prémium, también existirá un menú de usuario donde se podrá ver el historial de combates del propio usuario y los usuarios con más victorias en combates.
 
 ### 1.1.1 Menú general
 
@@ -29,8 +29,7 @@ Existirá un menú general con las opciones de Home, Pokémon, Movimientos y Ob-
 
 • En el Icono del usuario, se podrá ver el perfil del usuario, historial y un botón para cerrar la sesión.
 
-• En el Ranking se podrán ver los usuarios con más victorias en combates, el top 1 se mostrará, además de su nombre y número de victorias, con su avatar y equipo, del top 2 al 5 se mostrarán igual que el top 1 pero sin su equipo, y el resto de
-jugadores con su nombre y número de victorias.
+• En el Ranking se podrán ver los usuarios con más victorias en combates, el top 1 se mostrará, además de su nombre y número de victorias, con su avatar y equipo, del top 2 al 5 se mostrarán igual que el top 1 pero sin su equipo, y el resto de jugadores con su nombre y número de victorias.
 
 • En el Historial de combate se verán los últimos combates del usuario, información sobre estos combates, como si son ganados, perdidos, los equipos, etc.
 
