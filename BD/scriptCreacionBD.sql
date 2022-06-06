@@ -207,8 +207,8 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO avatarUsuario (rutaImagen) VALUES ("./Imagenes/EntrenadorBaseChico.png");
-INSERT INTO avatarUsuario (rutaImagen) VALUES ("./Imagenes/EntrenadorBaseChica.png");
+INSERT INTO avatarUsuario (id, rutaImagen) VALUES (1, "./Imagenes/EntrenadorBaseChico.png");
+INSERT INTO avatarUsuario (id, rutaImagen) VALUES (2, "./Imagenes/EntrenadorBaseChica.png");
 
 -- Agua
 INSERT INTO pokemon (nombre, vida, ataque, defensa, velocidad, rutaImagen) VALUES ("Floatzel", 280, 193, 103, 211, "./Imagenes/Floatzel.png");
