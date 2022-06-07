@@ -45,10 +45,18 @@ public class BuscadorCombates {
 				while(rs.next()) {
 						if (rs.getString("nombreUsuario").equals(combate.getUsr1().getNombre())) {
 							combate.setPk1(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr1()));
-							combate.setMv1(seleccionarMovimiento(combate.getPk1(), rs.getInt("idMovimiento")));
+							if(rs.getBoolean("cambioPokemon")) {
+								combate.getUsr1().setCambioPokemon(true);
+							}else {
+								combate.setMv1(seleccionarMovimiento(combate.getPk1(), rs.getInt("idMovimiento")));
+							}
 						}else if(rs.getString("nombreUsuario").equals(combate.getUsr2().getNombre())) {
 							combate.setPk2(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr2()));
-							combate.setMv2(seleccionarMovimiento(combate.getPk2(), rs.getInt("idMovimiento")));
+							if(rs.getBoolean("cambioPokemon")) {
+								combate.getUsr2().setCambioPokemon(true);
+							}else {
+								combate.setMv2(seleccionarMovimiento(combate.getPk2(), rs.getInt("idMovimiento")));
+							}
 						}
 						
 						contador++;
