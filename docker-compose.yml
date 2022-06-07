@@ -8,8 +8,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pokedexdb
-      MYSQL_USER: fran
-      MYSQL_PASSWORD: 123456Fran
+      MYSQL_USER: prueba
+      MYSQL_PASSWORD: 123456
     ports:
       - 3307:3306
     cap_add:
@@ -34,5 +34,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pokedexdb
-      MYSQL_USER: fran
-      MYSQL_PASSWORD: 123456Fran
+      MYSQL_USER: prueba
+      MYSQL_PASSWORD: 123456
