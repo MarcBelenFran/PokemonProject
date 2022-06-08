@@ -36,7 +36,8 @@ INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Lluevehojas", 14
 INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Portazo", 80, 75);
 INSERT INTO movimiento (nombre, potencia, probCritico) VALUES ("Hoja Aguda", 90, 100);
 
-delimiter |
+delimiter $$
+DROP TRIGGER IF EXISTS revisarUsuarios $$
 CREATE TRIGGER revisarUsuarios before insert on usuario
 FOR EACH ROW
 BEGIN
@@ -45,6 +46,34 @@ BEGIN
 	IF(contador > 0) then
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nombre de usuario repetido';
 	END IF;
-END; 
-|
+END; $$
+
+delimiter ;
+
+
+delimiter $$
+DROP TRIGGER IF EXISTS eliminarTurnos $$
+CREATE TRIGGER eliminarTurnos after update on combate
+FOR EACH ROW
+BEGIN
+	DECLARE combate_ID int;
+    SET combate_ID = (Select id from combate where ganador = new.ganador);
+	DELETE FROM turnos where idCombate = combate_ID;
+END $$
+
+delimiter ;
+
+
+delimiter $$
+DROP TRIGGER IF EXISTS revisarGanador $$
+CREATE TRIGGER revisarGanador before delete on turnos
+FOR EACH ROW
+BEGIN
+	DECLARE combate_ID int;
+    SET combate_ID = (Select idCombate from turnos where idCombate = old.idCombate);
+	IF (select ganador from combates where id = combate_ID is null) THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay ganador del combate';
+    END IF;
+END $$
+
 delimiter ;
