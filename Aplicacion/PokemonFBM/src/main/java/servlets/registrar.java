@@ -32,7 +32,7 @@ public class registrar extends HttpServlet {
 		if(u.registrarUsuario()) {
 			response.getWriter().append("Usuario registrado correctamente");
 		}else {
-			response.getWriter().append("Error al registrar el usuario");
+			response.getWriter().append("Error con la base de datos o usuario ya registrado");
 		}
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");

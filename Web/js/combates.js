@@ -17,15 +17,7 @@ function crearPartida(){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            localStorage.setItem("idCombate", http.responseText);
             document.getElementById("popup").style.display = "flex";
-            let comprobarJugador = setInterval(function (){
-                if(comprobarJugador2() == "1"){
-                    clearInterval(comprobarJugador);
-                    document.getElementById("popup").style.display = "none";
-                    document.getElementById("popupCombates").style.display = "flex";
-                }
-            }, 1000);
         }
     }
 
