@@ -29,7 +29,7 @@ public class insertarMovimiento extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BuscadorCombates.insertarTurno(Integer.parseInt(request.getParameter("idCombate")), Integer.parseInt(request.getParameter("turno")), Integer.parseInt(request.getParameter("idJugador")),
-				Integer.parseInt(BuscadorPokemon.idImagen(request.getParameter("imagenPokemon"))), Integer.parseInt(request.getParameter("idMovimiento")), BuscadorCombates.convertirBooleano(request.getParameter("idCombate")));
+				Integer.parseInt(BuscadorPokemon.idImagen(request.getParameter("imagenPokemon"))), Integer.parseInt(request.getParameter("idMovimiento")), BuscadorCombates.convertirBooleano(request.getParameter("cambio")));
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("text/plain"); 

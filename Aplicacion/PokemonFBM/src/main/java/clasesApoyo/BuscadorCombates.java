@@ -266,13 +266,30 @@ public class BuscadorCombates {
 			String url = datosMysql.driverUrl;
 			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
-			String query = "INSERT INTO turno (numeroTurno, idUsuario, idMovimiento, idPokemon, cambioPokemon) VALUES ("+turno+","+idJugador+","+idMovimiento+","+idPokemon+","+cambioPokemon+")";
+			String query = "INSERT INTO turno (numeroTurno, idUsuario, idMovimiento, idPokemon, cambioPokemon) VALUES ("+turno+", "+idJugador+", "+idMovimiento+", "+idPokemon+", "+cambioPokemon+")";
 			st.executeUpdate(query);
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	public static String combateJ1 (int idUsuario) {
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "SELECT jugador1 FROM movimiento WHERE jugador1= "+idUsuario+"AND jugador2 is not null";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				return "1";
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "0";
 	}
 
 }
