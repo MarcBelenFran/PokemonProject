@@ -28,9 +28,9 @@ public class comprobarJugador2 extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String respuesta = BuscadorCombates.combateJ1(Integer.parseInt(request.getParameter("idUsuario")));
-		
+		System.out.println(respuesta);
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(respuesta);
 		response.setContentType("text/plain"); 

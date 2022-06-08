@@ -1,3 +1,5 @@
+let comprobarJugador = setInterval(abrirCombate, 1000);
+
 function actualizarCombatesDisponibles(){
     let http = new XMLHttpRequest();
  
@@ -12,45 +14,52 @@ function actualizarCombatesDisponibles(){
     http.send("idUsuario="+localStorage.getItem("id"));
 }
 
+function abrirCombate(){
+	console.log(comprobarJugador2())
+	if(comprobarJugador2() == "1"){
+		clearInterval(comprobarJugador)
+		document.getElementById("popup").style.display = "none";
+		document.getElementById("popupCombates").style.display = "flex";
+	}
+}
+
 function crearPartida(){
     let http = new XMLHttpRequest();
- 
+	console.log("hola");
     http.onreadystatechange = function(){
+	
         if(http.readyState == 4 && http.status == 200){
-            let popup = document.getElementById('popup');
-            popup.style.display = "flex";
-            while(comprobarJugador2 = ""){
-
-            }
+		comprobarJugador;
+		localStorage.setItem("idCombate", http.responseText);
+        document.getElementById("popup").style.display = "flex";
         }
     }
 
     http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idUsuario="+localStorage.getItem("id"));
-    
-    
 }
 
 function comprobarJugador2(){
     let http = new XMLHttpRequest();
- 
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
             return http.responseText;
         }
     }
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/comprobarJugador2", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idUsuario="+localStorage.getItem("id"));
 }
 
 function cancelarCombate(){
     let http = new XMLHttpRequest();
- 
+	
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
+			clearInterval(comprobarJugador);
             let popup = document.getElementById('popup');
 
             popup.style.display = "none";
@@ -68,10 +77,8 @@ function unirseCombate(idCombate){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            setTimeout(function(){         
-                console.log("hola");
-                document.getElementById("popupCombates").style.display = "flex";
-            }, 2000);
+            localStorage.setItem("idCombate", idCombate);     
+            document.getElementById("popupCombates").style.display = "flex";
         }
     }
 
@@ -104,13 +111,12 @@ function obtenerImagenSeleccionado(){
             seleccionado = true;
             let rutaImagen = listaPokemon[i].firstChild.src;
             resultado += rutaImagen.substring(rutaImagen.indexOf("Imagenes"), rutaImagen.length);
-            console.log(resultado);
         }else{
             i++;
         }
     }
 
-    return resultado
+    return resultado;
 }
 
 
