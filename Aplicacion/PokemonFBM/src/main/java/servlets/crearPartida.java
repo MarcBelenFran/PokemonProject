@@ -38,6 +38,7 @@ public class crearPartida extends HttpServlet {
 		
 
 		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.setContentType("text/plain"); 
 	}
 
 }

@@ -33,6 +33,7 @@ public class actualizarDatos extends HttpServlet {
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(u.actualizarDatos());
+		response.setContentType("text/plain"); 
 		
 	}
 

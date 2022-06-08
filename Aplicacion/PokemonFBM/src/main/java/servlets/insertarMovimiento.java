@@ -1,7 +1,8 @@
 package servlets;
 import java.io.IOException;
 
-import clasesCombate.Usuario;
+import clasesApoyo.BuscadorCombates;
+import clasesApoyo.BuscadorPokemon;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponseWrapper;
  * Servlet implementation class registrar
  */
 @jakarta.servlet.annotation.WebServlet("/registrar")
-public class registrar extends HttpServlet {
+public class insertarMovimiento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,16 +28,10 @@ public class registrar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = new Usuario(request.getParameter("nombre"),request.getParameter("correo"),request.getParameter("contrasena"));
-		System.out.println(u);
-		if(u.registrarUsuario()) {
-			response.getWriter().append("Usuario registrado correctamente");
-		}else {
-			response.getWriter().append("Error al registrar el usuario");
-		}
+		BuscadorCombates.insertarTurno(Integer.parseInt(request.getParameter("idCombate")), Integer.parseInt(request.getParameter("turno")), Integer.parseInt(request.getParameter("idJugador")),
+				Integer.parseInt(BuscadorPokemon.idImagen(request.getParameter("imagenPokemon"))), Integer.parseInt(request.getParameter("idMovimiento")), BuscadorCombates.convertirBooleano(request.getParameter("idCombate")));
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.setContentType("text/plain"); 
 		response.setContentType("text/plain"); 
 	}
 

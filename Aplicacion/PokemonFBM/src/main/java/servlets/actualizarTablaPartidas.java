@@ -38,6 +38,7 @@ public class actualizarTablaPartidas extends HttpServlet {
 
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(tablaPartidas);
+		response.setContentType("text/plain"); 
 	}
 
 }

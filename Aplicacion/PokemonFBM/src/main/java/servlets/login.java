@@ -35,6 +35,7 @@ public class login extends HttpServlet {
 			response.getWriter().append(u.logearUsuario());
 		}
 		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.setContentType("text/plain"); 
 	}
 
 }

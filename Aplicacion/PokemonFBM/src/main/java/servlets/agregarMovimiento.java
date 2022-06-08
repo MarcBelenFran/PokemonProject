@@ -39,6 +39,7 @@ public class agregarMovimiento extends HttpServlet {
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(nombreMovimiento);
+		response.setContentType("text/plain"); 
 	}
 
 }

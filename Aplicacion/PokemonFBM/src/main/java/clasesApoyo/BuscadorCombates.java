@@ -23,12 +23,91 @@ public class BuscadorCombates {
 		// (SE IRIA ACTUALIZANDO LA ARRAY DEL EQUIPO POKEMON)
 		// 3.- AL FINAL DE LA SELECT SE TIENE QUE DEVOLVER EL ARRAY EN FORMATO JSON AL JS
 	
-	public static String combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, boolean cambio1, int idUsr2,String nombreUsr2, int[]equipo2, boolean cambio2) {
+	public static String buscarCombate(int idCombate) {
+		int idUsuario1 = idUsuario(idCombate, 1);
+		int idUsuario2 = idUsuario(idCombate, 2);
+		String nombreUsuario1 = nombreUsuario(idUsuario1);
+		String nombreUsuario2 = nombreUsuario(idUsuario2);
+		int[] equipo1 = equipo(idUsuario1);
+		int[] equipo2 = equipo(idUsuario2);
+		return combate(idCombate, idUsuario1, nombreUsuario1, equipo1, idUsuario2, nombreUsuario2, equipo2);
+	}
+	
+	public static int idUsuario(int idCombate, int nJugador) {
+		
+		try {
+			String query;
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			if(nJugador == 1) {
+				query = "SELECT jugador1 FROM combate WHERE id ="+idCombate;
+			}else {
+				query = "SELECT jugador2 FROM combate WHERE id ="+idCombate;
+			}
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				return rs.getInt("id");
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}return 0;
+	}
+	
+	public static String nombreUsuario(int idUsuario) {
+		
+		try {
+			String query;
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			query = "SELECT nombreUsuario FROM usuario WHERE id ="+idUsuario;
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				return rs.getString("nombreUsuario");
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		return null;
+	}
+	
+	public static int[] equipo(int idUsuario) {
+		ArrayList<Integer> equipoProvisional = new ArrayList<>();
+		try {
+			String query;
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			query = "SELECT idPokemon FROM equipo WHERE idUsuario ="+idUsuario+"ORDER BY idPokemon";
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				equipoProvisional.add(rs.getInt("idPokemon"));
+			}
+			int[] equipo = new int[equipoProvisional.size()];
+			for (int i = 0; i < equipoProvisional.size(); i++)
+	            equipo[i] = equipoProvisional.get(i);
+			return equipo;
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
+	public static String combate(int idCombate, int idUsr1, String nombreUsr1, int[] equipo1, int idUsr2,String nombreUsr2, int[]equipo2) {
 		//CREAM COMBAT I USUARIS
 		Combate combate = new Combate();
 		combate.setId(idCombate);
-		combate.setUsr1(crearUsuario(idUsr1, equipo1, cambio1, nombreUsr1));
-		combate.setUsr2(crearUsuario(idUsr2, equipo2, cambio2, nombreUsr2));
+		combate.setUsr1(crearUsuario(idUsr1, equipo1, nombreUsr1));
+		combate.setUsr2(crearUsuario(idUsr2, equipo2, nombreUsr2));
 		
 		int contador = 0;
 		String json = "";
@@ -46,9 +125,11 @@ public class BuscadorCombates {
 						if (rs.getString("nombreUsuario").equals(combate.getUsr1().getNombre())) {
 							combate.setPk1(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr1()));
 							combate.setMv1(seleccionarMovimiento(combate.getPk1(), rs.getInt("idMovimiento")));
+							combate.getUsr1().setCambioPokemon(rs.getBoolean("cambioPokemon"));
 						}else if(rs.getString("nombreUsuario").equals(combate.getUsr2().getNombre())) {
 							combate.setPk2(seleccionarPokemon(rs.getInt("idPokemon"), combate.getUsr2()));
 							combate.setMv2(seleccionarMovimiento(combate.getPk2(), rs.getInt("idMovimiento")));
+							combate.getUsr2().setCambioPokemon(rs.getBoolean("cambioPokemon"));
 						}
 						
 						contador++;
@@ -59,10 +140,10 @@ public class BuscadorCombates {
 				
 				//DEVOLVEMOS EL NOMBRE Y LA VIDA DE LOS 12 POKEMON
 				for(int i=0; i<combate.getUsr1().getEquipo().size(); i++) {
-					json = json + combate.getUsr1().getEquipo().get(i).toJSON(combate.getUsr1().getEquipo().get(i).getNombre());
+					json = json +","+ combate.getUsr1().getEquipo().get(i).toJSON(combate.getUsr1().getEquipo().get(i).getNombre());
 				}
 				for(int i=0; i<combate.getUsr2().getEquipo().size(); i++) {
-					json = json + combate.getUsr2().getEquipo().get(i).toJSON(combate.getUsr2().getEquipo().get(i).getNombre());
+					json = json +","+ combate.getUsr2().getEquipo().get(i).toJSON(combate.getUsr2().getEquipo().get(i).getNombre());
 				}
 				
 				return json;
@@ -91,9 +172,8 @@ public class BuscadorCombates {
 		return null;
 	}
 	
-	public static Usuario crearUsuario(int id, int[]equipo, boolean cambioPokemon, String nombreUsuario) {
-				Usuario usuario = new Usuario(id, nombreUsuario, null, null, cambioPokemon, crearPokemons(equipo, id));
-				return usuario;
+	public static Usuario crearUsuario(int id, int[]equipo, String nombreUsuario) {
+				return new Usuario(id, nombreUsuario, null, null, false, crearPokemons(equipo, id));
 	}
 	
 	public static ArrayList<Pokemon> crearPokemons(int[]equipo, int idUsuario) {
@@ -115,11 +195,11 @@ public class BuscadorCombates {
 				}
 			}
 			return nuevoEquipo;
-	}catch(Exception e) {
-		System.out.println(e.getMessage());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
-	return null;
-}
 	
 	public static Movimiento[] movimientos(int idPokemon, int idUsuario) {
 		Movimiento[] aMovimientos = new Movimiento[4];
@@ -155,8 +235,7 @@ public class BuscadorCombates {
 			ResultSet rs = st.executeQuery(query);
 			
 			while(rs.next()) {
-				Movimiento movimiento = new Movimiento(rs.getInt("id"), rs.getInt("potencia"), rs.getInt("probCritico"));
-				return movimiento;
+				return new Movimiento(rs.getInt("id"), rs.getInt("potencia"), rs.getInt("probCritico"));
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -179,6 +258,21 @@ public class BuscadorCombates {
 		   numeros[i] = Integer.parseInt(string[i]);
 		}
 		return numeros;
+	}
+	
+	public static Movimiento insertarTurno(int idCombate, int turno, int idJugador, int idPokemon, int idMovimiento, boolean cambioPokemon) {
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "INSERT INTO turno (numeroTurno, idUsuario, idMovimiento, idPokemon, cambioPokemon) VALUES ("+turno+","+idJugador+","+idMovimiento+","+idPokemon+","+cambioPokemon+")";
+			st.executeUpdate(query);
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 }

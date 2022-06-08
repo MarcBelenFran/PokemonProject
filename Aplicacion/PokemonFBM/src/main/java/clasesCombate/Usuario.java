@@ -26,8 +26,8 @@ public class Usuario {
 		this(0, nombre, correo, contrasena, true, null);
 	}
 	
-	public Usuario(int id, String nombre, boolean cambioPokemon, ArrayList<Pokemon> equipo) {
-		this(id, nombre, null, null, cambioPokemon, equipo);
+	public Usuario(int id, String nombre, ArrayList<Pokemon> equipo) {
+		this(id, nombre, null, null, false, equipo);
 	}
 
 	public Usuario(int id, String nombre, String correo, String contrasena,boolean cambioPokemon, ArrayList<Pokemon> equipo) {
@@ -36,7 +36,6 @@ public class Usuario {
 		this.setCorreo(correo);
 		this.setContrasena(contrasena);
 		this.equipo = new ArrayList<Pokemon>();
-		this.setCambioPokemon(cambioPokemon);
 		this.equipo = equipo;
 	}
 	

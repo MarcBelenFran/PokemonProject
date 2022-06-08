@@ -39,6 +39,7 @@ public class tablaPokemon extends HttpServlet {
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(resultado);
+		response.setContentType("text/plain"); 
 	}
 
 }

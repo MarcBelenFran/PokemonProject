@@ -40,6 +40,7 @@ public class movimientosPokemon extends HttpServlet {
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(movimientos);
+		response.setContentType("text/plain"); 
 	}
 
 }

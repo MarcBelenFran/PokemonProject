@@ -39,6 +39,7 @@ public class imagenesPokemon extends HttpServlet {
 		
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(rutasImagenes);
+		response.setContentType("text/plain"); 
 	}
 
 }
