@@ -72,7 +72,7 @@ function obtenerNombreSeleccionado(rutaImagen){
 function agregarMovimiento(idMovimiento){
     let numeroMovimiento = document.getElementById("movimientoSeleccionado").classList[1];
     let http = new XMLHttpRequest();
- 
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
             document.getElementById("movimientoSeleccionado").innerHTML  = http.responseText;

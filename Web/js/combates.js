@@ -14,38 +14,38 @@ function actualizarCombatesDisponibles(){
 
 function crearPartida(){
     let http = new XMLHttpRequest();
- 
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            let popup = document.getElementById('popup');
-            popup.style.display = "flex";
-            while(comprobarJugador2 = "" || popup.style.display == "none"){
-                setTimeout( () => {
-                    comprobarJugador2();
-                }, 1000)
-            }
+            localStorage.setItem("idCombate", http.responseText);
+            document.getElementById("popup").style.display = "flex";
+            let comprobarJugador = setInterval(function (){
+                if(comprobarJugador2() == "1"){
+                    clearInterval(comprobarJugador);
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("popupCombates").style.display = "flex";
+                }
+            }, 1000);
         }
     }
 
     http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idUsuario="+localStorage.getItem("id"));
-    
-    
 }
 
 function comprobarJugador2(){
     let http = new XMLHttpRequest();
- 
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
             return http.responseText;
         }
     }
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/comprobarJugador2", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send("idUsuario="+localStorage.getItem("id"));
+    http.send("idUsuario="+localStorage.getItem("idUsuario"));
 }
 
 function cancelarCombate(){
@@ -70,10 +70,8 @@ function unirseCombate(idCombate){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            setTimeout(function(){ 
-                localStorage.setItem("idCombate", idCombate);     
-                document.getElementById("popupCombates").style.display = "flex";
-            }, 1000);
+            localStorage.setItem("idCombate", idCombate);     
+            document.getElementById("popupCombates").style.display = "flex";
         }
     }
 
@@ -112,7 +110,7 @@ function obtenerImagenSeleccionado(){
         }
     }
 
-    return resultado
+    return resultado;
 }
 
 

@@ -13,14 +13,26 @@ function enviarTurno(){
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send(
         "idUsuario="+localStorage.getItem("id") +
-        "idCombate="+localStorage.getItem("idCombate") +
+        "&idCombate="+localStorage.getItem("idCombate") +
         "&numeroTurno="+localStorage.getItem("turno") +
         "&idMovimiento="+localStorage.getItem("idMovimiento") +
-        "&imagenPokemon="+localStorage.getItem("imagenPokemon") +
+        "&imagenPokemon="+ sacarImagenPokemon() +
         "&cambioPokemon="+localStorage.getItem("cambioPokemon") 
         );
 }
 
 function rendirse(){
     document.getElementById("popupCombates").style.display = "none";
+}
+
+function sacarImagenPokemon(imagenPokemon){
+    let imagen;
+
+    if(localStorage.getItem("numeroJugador") == 1){
+        imagen = document.getElementById("imagenPokemon1");
+    }else{
+        imagen = document.getElementById("imagenPokemon2");
+    }
+    
+    return imagen;
 }

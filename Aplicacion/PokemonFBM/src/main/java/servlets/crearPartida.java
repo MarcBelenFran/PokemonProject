@@ -29,16 +29,18 @@ public class crearPartida extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String resultado = "";
 		
 		try {
-			BuscadorPartidas.crearPartida(request.getParameter("idUsuario"));
+			resultado = BuscadorPartidas.crearPartida(request.getParameter("idUsuario"));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-
+		
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.setContentType("text/plain"); 
+		response.setContentType("text/plain");
+		response.getWriter().append(resultado);
 	}
 
 }

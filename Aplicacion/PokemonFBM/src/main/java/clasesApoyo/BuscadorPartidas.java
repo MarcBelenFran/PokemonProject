@@ -53,8 +53,8 @@ public class BuscadorPartidas {
 	 * Metodo crearPartida. Crea una partida en la base de datos con jugador1 el usuario que ha hecho la peticion.
 	 * @param idUsuario. Usuario que hace la peticion.
 	 */
-	public static void crearPartida(String idUsuario){
-		
+	public static String crearPartida(String idUsuario){
+		String resultado = "";
 		try {
 			Class.forName(datosMysql.driver);
 			String url = datosMysql.driverUrl;
@@ -63,13 +63,23 @@ public class BuscadorPartidas {
 			String query = "INSERT INTO combate(jugador1) VALUES ('"+idUsuario+"')";
 			st.executeUpdate(query);
 			
+			query = "Select id from combate where jugador1 = "+idUsuario+" and jugador2 is null order by id desc limit 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				System.out.println(rs.getString("id"));
+				resultado = rs.getString("id");
+			}
+			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
+		return resultado;
 	}
 	
 	public static void unirsePartida(String idUsuario, String idCombate) {
+		
 		try {
 			Class.forName(datosMysql.driver);
 			String url = datosMysql.driverUrl;

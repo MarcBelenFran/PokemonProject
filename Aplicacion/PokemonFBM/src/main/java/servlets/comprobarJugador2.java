@@ -11,10 +11,10 @@ import java.io.IOException;
 import clasesApoyo.BuscadorCombates;
 
 /**
- * Servlet implementation class movimientosPokemon
+ * Servlet implementation class comprobarJugador2
  */
-@WebServlet("/partidaJ1")
-public class partidaJ1 extends HttpServlet {
+@WebServlet("/comprobarJugador2")
+public class comprobarJugador2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
