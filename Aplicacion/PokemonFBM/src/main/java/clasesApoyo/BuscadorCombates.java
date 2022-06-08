@@ -275,21 +275,16 @@ public class BuscadorCombates {
 		return null;
 	}
 	
-	public static String combateJ1 (Integer idJugador) {
+	public static String combateJ1 (int idJugador) {
 		try {
 			Class.forName(datosMysql.driver);
 			String url = datosMysql.driverUrl;
 			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
-			String query = "SELECT jugador1 FROM combate WHERE jugador1 = "+idJugador+" AND jugador2 is not null and ganador is null order by id desc limit 1";
+			String query = "SELECT jugador1 FROM combate WHERE jugador1 = "+idJugador+"AND jugador2 is not null and ganador is null order by id desc limit 1";
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				if(rs.getInt("jugador1")==idJugador) {
-					return "1";
-				}else {
-					return "0";
-				}
-				
+				return "1";
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
