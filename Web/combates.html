@@ -56,7 +56,16 @@
             <div id="entornoCombate">
                 <div id="pantallaCombate">
                     <div id="pokemonsCombate">
-
+                        <div class="menuJugador">
+                            <div id="nombrePokemon1">Pikachu</div>
+                            <div class="vidaPokemon">100/100 HP</div>
+                            <img src="./Imagenes/pokemonNoElegido.png">
+                        </div>
+                        <div class="menuJugador">
+                            <div id="nombrePokemon2">Pikachu</div>
+                            <div class="vidaPokemon">100/100 HP</div>
+                            <img src="./Imagenes/pokemonNoElegido.png">
+                        </div>
                     </div>   
                     <div id="MovimientosCombate">
                         <button class="botonMovimientos">Movmiento1</button>
@@ -65,13 +74,24 @@
                         <button class="botonMovimientos">Movmiento4</button>
                     </div>
                     <div id="pantallaCambioPokemon">
-
+                        <button class="botonPokemon">Pokemon1</button>
+                        <button class="botonPokemon">Pokemon2</button>
+                        <button class="botonPokemon">Pokemon3</button>
+                        <button class="botonPokemon">Pokemon4</button>
+                        <button class="botonPokemon">Pokemon5</button>
                     </div>
                 </div>
                 <div id="chatCombate">
-                    <div id="botonesCombate">
-                        
+                    <div id="turnos">
+                        Turno: 
                     </div>
+                    <div id="logsCombate">
+                        hola
+                        hola
+                        hola
+                        hola
+                    </div>
+                    <button type="button" onclick="rendirse()">Rendirse</button>
                 </div>
             </div>
         </div>
@@ -82,8 +102,8 @@
                     <img src="./Imagenes/esperaCombates.gif" id="cargaCombate">
                     <h2 id="textoEspera">Esperando rival ...</h2>
                     <button id="cerrarMenu" type="button" onclick="cancelarCombate()">Cancelar combate</button>
-               </div>
-             </div>
+                </div>
+            </div>
             <table  id="tablaPartidas">
                 <tr>
                     <th>Id</th>
@@ -98,7 +118,7 @@
     </main>
     </div>
     <script src="js/combates.js"></script>
-    <script src="js/usuario.js"></script>
+    <script src="js/"></script>
     <script src="js/responsive.js"></script>
     <script src="js/popupCombate.js"></script>
 </body>

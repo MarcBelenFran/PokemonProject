@@ -50,7 +50,7 @@ function comprobarJugador2(){
 
 function cancelarCombate(){
     let http = new XMLHttpRequest();
- 
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
             let popup = document.getElementById('popup');
@@ -70,10 +70,10 @@ function unirseCombate(idCombate){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            setTimeout(function(){         
-                console.log("hola");
+            setTimeout(function(){ 
+                localStorage.setItem("idCombate", idCombate);     
                 document.getElementById("popupCombates").style.display = "flex";
-            }, 2000);
+            }, 1000);
         }
     }
 

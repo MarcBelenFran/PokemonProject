@@ -10,9 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletResponseWrapper;
 
 /**
- * Servlet implementation class registrar
+ * Servlet implementation class insertarMovimiento
  */
-@jakarta.servlet.annotation.WebServlet("/registrar")
+@jakarta.servlet.annotation.WebServlet("/insertarMovimiento")
 public class insertarMovimiento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

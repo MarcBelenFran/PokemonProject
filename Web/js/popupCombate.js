@@ -1,9 +1,11 @@
 function enviarTurno(){
     let http = new XMLHttpRequest();
- 
+    let JSONobjects;
+
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            
+            JSONobjects = JSON.parse(http.responseText);
+
         }
     }
 
@@ -17,4 +19,8 @@ function enviarTurno(){
         "&imagenPokemon="+localStorage.getItem("imagenPokemon") +
         "&cambioPokemon="+localStorage.getItem("cambioPokemon") 
         );
+}
+
+function rendirse(){
+    document.getElementById("popupCombates").style.display = "none";
 }
