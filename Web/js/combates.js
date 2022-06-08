@@ -19,8 +19,10 @@ function crearPartida(){
         if(http.readyState == 4 && http.status == 200){
             let popup = document.getElementById('popup');
             popup.style.display = "flex";
-            while(comprobarJugador2 = ""){
-
+            while(comprobarJugador2 = "" || popup.style.display == "none"){
+                setTimeout( () => {
+                    comprobarJugador2();
+                }, 1000)
             }
         }
     }
