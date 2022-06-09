@@ -281,7 +281,7 @@ public class BuscadorCombates {
 			String url = datosMysql.driverUrl;
 			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
 			Statement st = con.createStatement();
-			String query = "SELECT jugador1 FROM combate WHERE jugador1 = "+idJugador+"AND jugador2 is not null and ganador is null order by id desc limit 1";
+			String query = "SELECT jugador1 FROM combate WHERE jugador1 = "+idJugador+" AND jugador2 is not null and ganador is null order by id desc limit 1";
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
 				return "1";

@@ -1,4 +1,4 @@
-let comprobarJugador = setInterval(abrirCombate, 1000);
+let comprobarJugador = setInterval(abrirCombate, 2000);
 
 function actualizarCombatesDisponibles(){
     let http = new XMLHttpRequest();
@@ -45,6 +45,8 @@ function comprobarJugador2(){
 
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
+            
+            console.log(http.responseText);
             return http.responseText;
         }
     }
