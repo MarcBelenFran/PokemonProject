@@ -5,6 +5,16 @@ var tiempoTurno = setInterval(() => {
 }, 1000);
 var time = 60;
 
+ /*
+ 			FALTA:
+ 				- APRENDER A USAR OBJETOS JS
+ 				- FUNCION CREAR BOTONES DES DE UNA STRING LOS BOTONES NECESARIOS SOLO FALTA JAVASCRIPT EN JAVA: BuscadorCombates/sacarMovimientos (EJEMPLO DE LA STRING "1/HIDROBOMBA/3/HOJA AFILADA/")
+ 				- FUNCION SACAR POKEMON DE ULTIMO MOVIMIENTO DE CADA JUGADOR JAVASCRIPT, EN JAVA SE LLAMA: BuscadorCombates/ultimoPokemon (EJEMPLO DE LA STRING "idUsuario/idPokemon/rutaImagen/")
+ 				- FUNCION CREAR BOTONES A PARTIR DE ARRAY DE POKEMONS (Yo haria solo los que esten vivos) 
+ */
+
+
+	// ESTILO
 function timer() {
 	var time = time-1;
 	document.getElementById("clock").innerHTML = time;
@@ -72,6 +82,7 @@ function combate (){
 
 function rendirse(){
     document.getElementById("popupCombates").style.display = "none";
+    // funcion terminar combate en java
 }
 
 

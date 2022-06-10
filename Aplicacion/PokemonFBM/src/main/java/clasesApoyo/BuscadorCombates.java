@@ -275,6 +275,42 @@ public class BuscadorCombates {
 		return null;
 	}
 	
+	public static String sacarMovimientos(int idPokemon, int idJugador) {
+		String resultat = "";
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "SELECT m.id, m.nombre FROM movimiento m, equipo e WHERE e.idUsuario= "+idJugador+" AND idPokemon= "+idPokemon+" AND m.id = movimiento1 OR m.id = movimiento2 OR m.id = movimiento3 OR m.id = movimiento4";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				resultat = rs.getString("m.id")+"/"+rs.getString("m.nombre")+"/";
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return resultat;
+	}
+	
+	public static String ultimoPokemon(int idCombate) {
+		String resultat = "";
+		try {
+			Class.forName(datosMysql.driver);
+			String url = datosMysql.driverUrl;
+			Connection con = DriverManager.getConnection(url, datosMysql.user, datosMysql.password);
+			Statement st = con.createStatement();
+			String query = "Select t1.idUsuario, t1.idPokemon from turno t1, turno t2 where t1.numeroTurno = t2.numeroTurno and t1.idCombate = t2.idCombate and t1.idUsuario != t2.idUsuario and t1.idCombate= "+idCombate+" ORDER BY t1.numeroTurno desc LIMIT 2";
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				resultat = rs.getString("m.id")+"/"+rs.getString("m.nombre")+"/";
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return resultat;
+	}
+	
 	public static String combateJ1 (int idJugador) {
 		try {
 			Class.forName(datosMysql.driver);
