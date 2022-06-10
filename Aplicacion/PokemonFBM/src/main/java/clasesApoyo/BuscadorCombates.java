@@ -303,7 +303,7 @@ public class BuscadorCombates {
 			String query = "Select t1.idUsuario, t1.idPokemon from turno t1, turno t2 where t1.numeroTurno = t2.numeroTurno and t1.idCombate = t2.idCombate and t1.idUsuario != t2.idUsuario and t1.idCombate= "+idCombate+" ORDER BY t1.numeroTurno desc LIMIT 2";
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				resultat = rs.getString("m.id")+"/"+rs.getString("m.nombre")+"/";
+				resultat = rs.getString("t1.idUsuario")+"/"+"/"+rs.getString("t1.idPokemon")+"/"+BuscadorPokemon.buscadorImagen(rs.getString("t1.idPokemon"))+"/";
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
