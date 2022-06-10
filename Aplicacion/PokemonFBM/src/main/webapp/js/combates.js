@@ -1,37 +1,18 @@
-let comprobarJugador = setInterval(abrirCombate, 2000);
-
-function actualizarCombatesDisponibles(){
-    let http = new XMLHttpRequest();
- 
-    http.onreadystatechange = function(){
-        if(http.readyState == 4 && http.status == 200){
-            document.getElementById("tablaPartidas").innerHTML = http.responseText
-        }
-    }
-
-    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarTablaPartidas", true);
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.send("idUsuario="+localStorage.getItem("id"));
-}
-
-function abrirCombate(){
-	console.log(comprobarJugador2())
-	if(comprobarJugador2() == "1"){
-		clearInterval(comprobarJugador)
-		document.getElementById("popup").style.display = "none";
-		document.getElementById("popupCombates").style.display = "flex";
-	}
-}
+var comprobarJugador;
 
 function crearPartida(){
     let http = new XMLHttpRequest();
-	console.log("hola");
+	console.log("partidaCreada");
     http.onreadystatechange = function(){
-	
         if(http.readyState == 4 && http.status == 200){
-		comprobarJugador;
 		localStorage.setItem("idCombate", http.responseText);
-        document.getElementById("popup").style.display = "flex";
+		window.localStorage.setItem('join', '0');
+        let popup = document.getElementById("popup")
+        popup.style.display = "flex";
+        
+        comprobarJugador = setInterval(() => {
+			comprobarJugador2()
+		}, 1000);
         }
     }
 
@@ -40,14 +21,28 @@ function crearPartida(){
     http.send("idUsuario="+localStorage.getItem("id"));
 }
 
+function abrirCombate(){
+	if(window.localStorage.getItem('join')=="1"){
+		let popup = document.getElementById("popup")
+		popup.style.display = "none";
+		
+		let combate = document.getElementById("popupCombates")
+		combate.style.display = "flex";
+		solicitarCombate = setInterval(() => {
+			combate;
+		}, 5000);
+		clearInterval(comprobarJugador);
+	}
+}
+2
+
 function comprobarJugador2(){
     let http = new XMLHttpRequest();
-
+    
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-            
-            console.log(http.responseText);
-            return http.responseText;
+            window.localStorage.setItem('join', String(http.responseText));
+            abrirCombate();
         }
     }
 
@@ -61,10 +56,10 @@ function cancelarCombate(){
 	
     http.onreadystatechange = function(){
         if(http.readyState == 4 && http.status == 200){
-			clearInterval(comprobarJugador);
             let popup = document.getElementById('popup');
-
             popup.style.display = "none";
+            
+            clearInterval(comprobarJugador);
         }
     }
 
@@ -72,6 +67,20 @@ function cancelarCombate(){
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idUsuario="+localStorage.getItem("id"));
     
+}
+
+function actualizarCombatesDisponibles(){
+    let http = new XMLHttpRequest();
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            document.getElementById("tablaPartidas").innerHTML = http.responseText
+        }
+    }
+
+    http.open("POST", "http://localhost:8080/PokemonFBM/actualizarTablaPartidas", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("idUsuario="+localStorage.getItem("id"));
 }
 
 function unirseCombate(idCombate){

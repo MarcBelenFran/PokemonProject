@@ -1,13 +1,26 @@
 var JSONobjects;
-let solicitarCombate = setInterval(combate, 5000);
 const myTimeout = setTimeout(turnoRandom, 60000);
+var tiempoTurno = setInterval(() => {
+	timer()
+}, 1000);
+var time = 60;
+
+function timer() {
+	var time = time-1;
+	document.getElementById("clock").innerHTML = time;
+};
 
 // TURNO Y TURNO RANDOM SON LOS INSERTS QUE SE VAN A REALIZAR EN LA TABLA TURNO DE LA BASE DE DATOS (turnoRandom solo se realizará en caso de que el jugador no realize un movimiento)
 function turno() {
     clearTimeout(myTimeout);
     let http = new XMLHttpRequest();
+    
+    if(http.readyState==4 && http.status==200){
+		localStorage.setItem("turno", localStorage.getItem("turno")+1);
+		time=60;
+	}
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/insertarMovimiento", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idCombate="+localStorage.getItem("idCombate")
                 +"&idMovimiento="+localStorage.getItem("idMovimiento")
@@ -24,8 +37,13 @@ function turnoRandom() {
     let idMovimiento = movimientos[movimiento].id;
 
     let http = new XMLHttpRequest();
+    
+    if(http.readyState==4 && http.status==200){
+		localStorage.setItem("turno", localStorage.getItem("turno")+1);
+		time=60;
+	}
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/crearPartida", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/insertarMovimiento", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idCombate="+localStorage.getItem("idCombate")
                 +"&idMovimiento="+idMovimiento
@@ -46,7 +64,7 @@ function combate (){
 
     }
 
-    http.open("POST", "http://localhost:8080/PokemonFBM/BuscadorCombates", true);
+    http.open("POST", "http://localhost:8080/PokemonFBM/combate", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("idCombate="+localStorage.getItem("idCombate"));
 };
